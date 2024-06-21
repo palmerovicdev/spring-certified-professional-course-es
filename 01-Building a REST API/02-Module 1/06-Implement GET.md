@@ -116,7 +116,6 @@ private CashCard findById(@PathVariable Long requestedId) {
 }
 ```
 
-REST says that the Response needs to contain a Cash Card in its body, and a Response code of 200 (OK). Spring Web provides the `ResponseEntity` class for this purpose. It also provides several utility methods to produce Response Entities. Here, you can use `ResponseEntity` to create a `ResponseEntity` with code **200 (OK)**, and a body containing a `CashCard`. The final implementation looks like this:
 REST dice que la Respuesta debe contener una CashCard en su cuerpo y un código de respuesta de 200 (OK). Spring Web proporciona la clase `ResponseEntity` para este propósito. También proporciona varios métodos de utilidad para producir `ResponseEntities`. Aquí, puede usar `ResponseEntity` para crear una `ResponseEntity` con el código 200 (OK) y un cuerpo que contenga una `CashCard`. La implementación final se ve así:
 
 ```java
