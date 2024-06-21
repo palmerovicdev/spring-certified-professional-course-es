@@ -12,3 +12,27 @@ Otro beneficio de **"test-driving"** es que las pruebas te guían para escribir 
 
 Se pueden escribir diferentes pruebas en diferentes niveles del sistema. En cada nivel, hay un equilibrio entre la velocidad de ejecución, el "costo" de mantener la prueba y la confianza que aporta a la corrección del sistema. Esta jerarquía a menudo se representa como una "pirámide de pruebas".
 ![[test-pyramid.jpg]]
+**Pruebas unitarias (Unit Tests)**: Una prueba unitaria ejerce una pequeña **"unidad"** del sistema que está aislada del resto del sistema. Deberían ser simples y rápidos. Quieres una alta proporción de pruebas unitarias en tu pirámide de pruebas, ya que son clave para diseñar un software altamente cohesivo y poco acoplado.
+
+**Pruebas de integración (Integration Tests)**: Las pruebas de integración ejercen un subconjunto del sistema y pueden ejercer grupos de unidades en una sola prueba. Son más complicados de escribir y mantener, y se ejecutan más lentamente que las pruebas unitarias.
+
+**Pruebas de extremo a extremo (End-to-End Tests)**: Una prueba de extremo a extremo ejerce el sistema utilizando la misma interfaz que un usuario, como un navegador web. Aunque son extremadamente exhaustivas, las pruebas de extremo a extremo pueden ser muy lentas y frágiles porque utilizan interacciones de usuario simuladas en interfaces de usuario potencialmente complicadas. Implemente el menor número de estas pruebas.
+
+## The Red, Green, Refactor Loop
+
+A los equipos de desarrollo de software les encanta moverse rápido. Entonces, ¿cómo vas rápido para siempre? Al mejorar y simplificar continuamente su refactorización de código. Una de las únicas formas en que puedes refactorizar de forma segura es cuando tienes un conjunto de pruebas de confianza. Por lo tanto, el mejor momento para refactorizar el código en el que te estás enfocando actualmente es durante el ciclo **TDD**. Esto se llama el bucle de desarrollo **red, green & refactor**:
+
+1. **Rojo (Red)**: Escribe una prueba fallida para la funcionalidad deseada.
+
+2. **Verde (Green)**: Implementa lo más simple que puede funcionar para aprobar la prueba.
+
+3. **Refactorización (Refactoring)**: Busque oportunidades para simplificar, reducir la duplicación o mejorar el código sin cambiar ningún comportamiento, para refactorizar.
+
+4. **¡Repite! (Repeat)**
+
+A lo largo de los laboratorios de este curso, practicarás el bucle **Red, Green, Refactor** para desarrollar la **API REST** de **Family Cash Card**.
+
+## Summary
+El desarrollo impulsado por pruebas (**TDD**) es una técnica probada para ayudar a los desarrolladores de aplicaciones a diseñar un software simple pero robusto y protegerse contra las regresiones de la funcionalidad y los errores.
+
+A continuación, implementará pruebas unitarias utilizando **TDD** para los contratos **JSON** que utilizaremos mientras desarrollamos nuestra **API** de **Family Cash Card**. ¿Ves? ¡Te dijimos que lo haríamos!
