@@ -51,6 +51,8 @@ Este es el ejemplo que usamos arriba:
 }
 ```
 
+Agregue este archivo json en la ubicacion `src/test/resources/example/cashcard/expected.json`
+
 Otros formatos de datos populares incluyen **YAML** (Yet Another Markup Language) y **XML** (Extensible Markup Language). En comparación con **XML**, **JSON** lee y escribe más rápido, es más fácil de usar y ocupa menos espacio. Puedes usar **JSON** con la mayoría de los lenguajes de programación modernos y en todas las plataformas principales. También funciona a la perfección con aplicaciones basadas en **Javascript**.
 
 Por estas razones, **JSON** ha reemplazado en gran medida a **XML** como el formato más utilizado para las **API** utilizadas por las aplicaciones web, incluidas las **API REST**.
