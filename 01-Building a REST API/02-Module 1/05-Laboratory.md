@@ -69,7 +69,7 @@ Podrías haber esperado esto, ya que el número 1 no es igual al número 42.
 
 4. Para "arreglar" la prueba, puedes crear una afirmación que sabes que es cierta:
 ```java
-assertThat(42).isEqualTo(42
+assertThat(42).isEqualTo(42);
 ```
 
 5. Ahora ejecuta la prueba de nuevo. ¡Pasa!
