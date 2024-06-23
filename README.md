@@ -1,12 +1,12 @@
 # Spring Boot Professional Certified Learning Path - ES
 
-He creado este repositorio para proporcionar una traduccion del curso de Spring Boot Professional para el idioma español.
-Siguiendo este curso tendrás la capacidad de desarrollar aplicaciones Spring Boot de manera eficiente y segura. 
+He creado este repositorio para proporcionar una traduccion del curso de **Spring Boot Professional** para el idioma español.
+Siguiendo este curso tendrás la capacidad de desarrollar aplicaciones **Spring Boot** de manera eficiente y segura. 
 
-Al terminar puedes optar por hacer una prueba de certificacion que te avalará como desarrollador Spring Boot Professional. Dicha prueba se puede realizar de manera totalmente gratuita a partir de los primeros 12 meses de haber creado una cuenta en la platafroma de [Spring Academy](https://spring.academy/home). Tienes un intento gratis por 
+Al terminar puedes optar por hacer una prueba de certificacion que te avalará como desarrollador **Spring Boot Professional**. Dicha prueba se puede realizar de manera totalmente gratuita a partir de los primeros 12 meses de haber creado una cuenta en la platafroma de [Spring Academy](https://spring.academy/home). Tienes un intento gratis por 
 año, y puedes optar por hacer una prueba de certificación en cualquier momento.
 
-Recomiendo que sigas las instrucciones de la plataforma de Spring Academy para crear una cuenta y acceder a la plataforma.
+Recomiendo que sigas las instrucciones de la plataforma de **Spring Academy** para crear una cuenta y acceder a la plataforma.
 
 Puedes encontrar dicho curso haciendo click en el siguiente [enlace](https://spring.academy/paths/spring-certified-professional-2023).
 
