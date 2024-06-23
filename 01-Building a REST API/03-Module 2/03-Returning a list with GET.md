@@ -19,7 +19,7 @@ Cuando haga una solicitud de **API** para varias `CashCard`, lo ideal sería hac
 ]
 ```
 
-Resulta que nuestro viejo amigo, `CrudRepository`, tiene un método `findAll` que podemos usar para obtener fácilmente todas las tarjetas de efectivo de la base de datos. Sigamos adelante y usemos ese método. A primera vista, parece bastante simple:
+Resulta que nuestro viejo amigo, `CrudRepository`, tiene un método `findAll` que podemos usar para obtener fácilmente todas las `CashCard` de la base de datos. Sigamos adelante y usemos ese método. A primera vista, parece bastante simple:
 
 ```java
 @GetMapping()
@@ -28,11 +28,11 @@ private ResponseEntity<Iterable<CashCard>> findAll() {
 }
 ```
 
-Sin embargo, resulta que hay mucho más en esta operación que simplemente devolver todas las tarjetas de efectivo en la base de datos. Algunas preguntas me vienen a la mente:
+Sin embargo, resulta que hay mucho más en esta operación que simplemente devolver todas las `CashCard` en la base de datos. Algunas preguntas me vienen a la mente:
 
-1. ¿Cómo devuelvo solo las tarjetas de efectivo que posee el usuario? (¡Gran pregunta! Discutiremos esto en la próxima lección de Spring Security).
+1. ¿Cómo devuelvo solo las `CashCard` que posee el usuario? (¡Gran pregunta! Discutiremos esto en la próxima lección de Spring Security).
 
-2. ¿Y si hay cientos (o miles) de tarjetas de efectivo? ¿Debería la **API** devolver un número ilimitado de resultados o devolverlos en "partes"? Esto se conoce como **Paginación**.
+2. ¿Y si hay cientos (o miles) de `CashCard`? ¿Debería la **API** devolver un número ilimitado de resultados o devolverlos en "partes"? Esto se conoce como **Paginación**.
 
 3. ¿Deberían devolverse las `CashCard` en un orden en particular (es decir, deberían clasificarse)?
 
@@ -46,7 +46,7 @@ Aunque es poco probable que tengamos usuarios con miles de `CashCard`, nunca sab
 
 Con el fin de garantizar que una respuesta de la **API** no incluya un número astronómicamente grande de `CashCard`, utilicemos la funcionalidad de paginación de **Spring Data**. La paginación en **Spring** (y muchos otros marcos) es especificar la longitud de la página (por ejemplo, 10 elementos) y el índice de la página (a partir de 0). Por ejemplo, si un usuario tiene 25 `CashCard` y usted elige solicitar la segunda página donde cada página tiene 10 elementos, solicitaría una página de tamaño 10 y un índice de página de 1.
 
-¡Bingo! ¿Verdad? Pero espera, esto plantea otro obstáculo. Para que la paginación produzca el contenido correcto de la página, los elementos deben ordenarse en un orden específico. ¿Por qué? Bueno, digamos que tenemos un montón de tarjetas de efectivo con las siguientes cantidades:
+¡Bingo! ¿Verdad? Pero espera, esto plantea otro obstáculo. Para que la paginación produzca el contenido correcto de la página, los elementos deben ordenarse en un orden específico. ¿Por qué? Bueno, digamos que tenemos un montón de `CashCard` con las siguientes cantidades:
 
 - `0,19` $ (este casi se ha ido, ¡oh, bueno!)
 
@@ -58,7 +58,7 @@ Con el fin de garantizar que una respuesta de la **API** no incluya un número a
 
 - `10,00 $` (alguien le regaló este a tu sobrina por su cumpleaños)
 
-Ahora vamos a ver un ejemplo usando un tamaño de página de 3. Dado que hay 5 tarjetas de efectivo, haríamos dos solicitudes para devolverlas todas. La página 1 (índice 0) contiene tres elementos, y la página 2 (índice 1, la última página) contiene 2 elementos. Pero, ¿qué artículos van a dónde? Si especifica que los artículos deben ordenarse por cantidad en orden descendente, entonces así es como se paginan los datos:
+Ahora vamos a ver un ejemplo usando un tamaño de página de 3. Dado que hay 5 `CashCard`, haríamos dos solicitudes para devolverlas todas. La página 1 (índice 0) contiene tres elementos, y la página 2 (índice 1, la última página) contiene 2 elementos. Pero, ¿qué artículos van a dónde? Si especifica que los artículos deben ordenarse por cantidad en orden descendente, entonces así es como se paginan los datos:
 
 Página 1:
 
@@ -94,7 +94,7 @@ Página 2:
 
 Aunque se ven al azar, cada vez que hagas la solicitud, las tarjetas volverán exactamente en este orden, de modo que cada artículo se devuelva exactamente en una página.
 
-Ahora para la frase: Imagina que ahora creas una nueva tarjeta de efectivo con una cantidad de `42,00 $`. ¿En qué página crees que estará? Como puedes adivinar, no hay otra forma de saberlo que hacer la solicitud y ver dónde aterriza la nueva tarjeta de efectivo.
+Ahora para la frase: Imagina que ahora creas una nueva `CashCard` con una cantidad de `42,00 $`. ¿En qué página crees que estará? Como puedes adivinar, no hay otra forma de saberlo que hacer la solicitud y ver dónde aterriza la nueva `CashCard`.
 
 Entonces, ¿cómo podemos hacer que esto sea un poco más útil? Optemos por ordenar por un campo específico. Hay algunas buenas razones para hacerlo, incluyendo:
 

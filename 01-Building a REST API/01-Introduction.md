@@ -5,9 +5,9 @@ En este curso de nivel principiante, nuestros expertos de **Spring** te guían a
 ## What Will You Build?
 Estarás creando una sencilla aplicación de **Family Cash Card**, una forma moderna para que los padres administren los fondos de asignación para sus hijos.
 
-Los padres a menudo carecen de una manera fácil de administrar (es decir, enviar, recibir, rastrear) las asignaciones para sus hijos. Así que en lugar de repartir una pila de facturas, nuestra aplicación **Family Cash Card** basada en la nube permite a los padres administrar virtualmente las **"tarjetas de efectivo"** para sus hijos. Puedes pensar que la tarjeta de efectivo es muy similar a una tarjeta de regalo que muchos de nosotros enviamos y recibimos. El objetivo principal de la aplicación **Family Cash Card** es dar a los padres facilidad y control sobre la gestión de los fondos para sus hijos.
+Los padres a menudo carecen de una manera fácil de administrar (es decir, enviar, recibir, rastrear) las asignaciones para sus hijos. Así que en lugar de repartir una pila de facturas, nuestra aplicación **Family Cash Card** basada en la nube permite a los padres administrar virtualmente las **"`CashCard`"** para sus hijos. Puedes pensar que la `CashCard` es muy similar a una tarjeta de regalo que muchos de nosotros enviamos y recibimos. El objetivo principal de la aplicación **Family Cash Card** es dar a los padres facilidad y control sobre la gestión de los fondos para sus hijos.
 
-Utilizará **Spring Boot** para avanzar desde la creación de una sola tarjeta de efectivo en una base de datos hasta permitir la edición, eliminación y visualización de múltiples tarjetas de efectivo y, finalmente, proteger su aplicación contra el acceso no autorizado y los exploits no deseados.
+Utilizará **Spring Boot** para avanzar desde la creación de una sola `CashCard` en una base de datos hasta permitir la edición, eliminación y visualización de múltiples `CashCard` y, finalmente, proteger su aplicación contra el acceso no autorizado y los exploits no deseados.
 
 ![[NEWcardUI.png]]
 

@@ -31,9 +31,9 @@ El poder de REST radica en la forma en que hace referencia a un recurso y en có
 - Para UPDATE: utilice el método HTTP PUT.
 - Para DELETE: utilice el método HTTP DELETE.
 
-El **URI** del punto final para los objetos de CashCard comienza con la palabra clave `/cashcards`. Las operaciones de READ, UPDATE y DELETE requieren que proporcionemos el identificador único del recurso de destino. La aplicación necesita este identificador único para realizar la acción correcta exactamente en el recurso correcto. Por ejemplo, para hacer READ, UPDATE o DELETE a una tarjeta de efectivo con el identificador de "42", el punto final sería `/cashcards/42`.
+El **URI** del endpoint para los objetos de CashCard comienza con la palabra clave `/cashcards`. Las operaciones de READ, UPDATE y DELETE requieren que proporcionemos el identificador único del recurso de destino. La aplicación necesita este identificador único para realizar la acción correcta exactamente en el recurso correcto. Por ejemplo, para hacer READ, UPDATE o DELETE a una `CashCard` con el identificador de "42", el endpoint sería `/cashcards/42`.
 
-Tenga en cuenta que no proporcionamos un identificador único para la operación CREATE. Como aprenderemos con más detalle en futuras lecciones, CREATE tendrá el efecto secundario de crear una nueva tarjeta de efectivo con una nueva identificación única. No se debe proporcionar un identificador al crear una nueva tarjeta de efectivo porque la aplicación creará un nuevo identificador único para nosotros.
+Tenga en cuenta que no proporcionamos un identificador único para la operación CREATE. Como aprenderemos con más detalle en futuras lecciones, CREATE tendrá el efecto secundario de crear una nueva `CashCard` con una nueva identificación única. No se debe proporcionar un identificador al crear una nueva `CashCard` porque la aplicación creará un nuevo identificador único para nosotros.
 
 La siguiente tabla tiene más detalles sobre las operaciones de RESTful CRUD.
 
@@ -48,7 +48,7 @@ Cuando seguimos las convenciones REST para crear o actualizar un recurso, necesi
 
 ### Cash Card Example
 
-Usemos el ejemplo de un endpoint de lectura. Para la operación de lectura, la ruta URI (endpoint) es `/cashcards/{id}`, donde `{id}` se reemplaza por un identificador de tarjeta de efectivo real, sin las llaves, y el método **HTTP** es **GET**.
+Usemos el ejemplo de un endpoint de lectura. Para la operación de lectura, la ruta URI (endpoint) es `/cashcards/{id}`, donde `{id}` se reemplaza por un identificador de `CashCard` real, sin las llaves, y el método **HTTP** es **GET**.
 
 En las solicitudes **GET**, el cuerpo está vacío. Por lo tanto, la solicitud de leer la CashCard con una identificación de 123 sería:
   
@@ -78,7 +78,7 @@ Ahora que hemos hablado de REST en general, echemos un vistazo a las partes de S
 
 Una de las principales cosas que hace Spring es configurar e instanciar objetos. Estos objetos se llaman Spring Beans, y generalmente son creados por Spring (en lugar de usar la palabra clave de Java "new"). Puedes dirigir a Spring para que cree Beans de varias maneras.
 
-En esta lección, anotarás una clase con una anotación de Spring, que indica a Spring que cree una instancia de la clase durante la fase de escaneo de componentes de primavera. Esto sucede al iniciar la aplicación. El Bean se almacena en el contenedor de IoC de Spring. Desde aquí, el Bean se puede inyectar en cualquier código que lo solicite.
+En esta lección, anotarás una clase con una anotación de Spring, que indica a Spring que cree una instancia de la clase durante la fase de escaneo de componentes de **Spring**. Esto sucede al iniciar la aplicación. El Bean se almacena en el contenedor de IoC de Spring. Desde aquí, el Bean se puede inyectar en cualquier código que lo solicite.
 
 ### Spring Web Controllers
 
@@ -130,6 +130,6 @@ class CashCardController {
 ```
 
 ## Summary
-En esta lección, aprendiste cómo REST utiliza HTTP para definir las operaciones CRUD en una API. Luego, aprendiste a definir un controlador de primavera para implementar el endpoint de lectura REST, y cómo usar la funcionalidad adicional de Spring para procesar fácilmente la solicitud y la respuesta en un controlador.
+En esta lección, aprendiste cómo REST utiliza HTTP para definir las operaciones CRUD en una API. Luego, aprendiste a definir un controlador de **Spring** para implementar el endpoint de lectura REST, y cómo usar la funcionalidad adicional de Spring para procesar fácilmente la solicitud y la respuesta en un controlador.
 
-¡Ahora, vamos a implementar nuestro primer punto final REST usando Spring y Spring Boot!
+¡Ahora, vamos a implementar nuestro primer endpoint REST usando Spring y Spring Boot!

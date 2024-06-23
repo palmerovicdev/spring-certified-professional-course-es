@@ -50,7 +50,7 @@ Request:
     }
 ```
 
-Por el contrario, si recuerda de una lección anterior, la operación **GET** incluye la identificación de la tarjeta de efectivo en el **URI**, pero no en el cuerpo de la solicitud.
+Por el contrario, si recuerda de una lección anterior, la operación **GET** incluye la identificación de la `CashCard` en el **URI**, pero no en el cuerpo de la solicitud.
 
 Entonces, ¿por qué no hay identificación en la solicitud? Porque decidimos permitir que el servidor creara el **ID**. Por lo tanto, el contrato de datos para la operación de lectura es diferente al de la operación **CREATE**.
 
@@ -60,7 +60,7 @@ Vamos a la respuesta. En una creación exitosa, ¿qué código de estado de resp
 
 El hecho de que **CREATED** sea el nombre del código hace que parezca intuitivamente apropiado, pero hay otra razón más técnica para usarlo: un código de respuesta de **200 OK** no responde a la pregunta "¿Hubo algún cambio en los datos del servidor?". Al devolver el estado `201 CREATED`, la **API** está comunicando específicamente que los datos se agregaron al almacén de datos en el servidor.
 
-En una lección anterior aprendiste que una respuesta **HTTP** contiene dos cosas: un código de estado y un cuerpo. ¡Pero eso no es todo! Una respuesta también contiene encabezados. Los encabezados tienen un nombre y un valor. El estándar **HTTP** especifica que el encabezado de ubicación en una respuesta `201 CREATED` debe contener el URI del recurso creado. Esto es útil porque permite a la persona que llama obtener fácilmente el nuevo recurso utilizando el punto final **GET** (el que implementamos anteriormente).
+En una lección anterior aprendiste que una respuesta **HTTP** contiene dos cosas: un código de estado y un cuerpo. ¡Pero eso no es todo! Una respuesta también contiene encabezados. Los encabezados tienen un nombre y un valor. El estándar **HTTP** especifica que el encabezado de ubicación en una respuesta `201 CREATED` debe contener el URI del recurso creado. Esto es útil porque permite a la persona que llama obtener fácilmente el nuevo recurso utilizando el endpoint **GET** (el que implementamos anteriormente).
 
 Aquí está la respuesta completa:
 
@@ -90,12 +90,12 @@ return ResponseEntity
 ¿No te alegras de que Spring Web proporcione el método de conveniencia `.created()`?
 
 ## Summary
-Hemos tomado algunas decisiones sobre cómo nuestra **API** apoyará la creación de tarjetas de efectivo familiares:
+Hemos tomado algunas decisiones sobre cómo nuestra **API** apoyará la creación de `CashCard` familiares:
 
-- La **API** aceptará solicitudes **POST** para crear una tarjeta de efectivo.
+- La **API** aceptará solicitudes **POST** para crear una `CashCard`.
 
-- El servidor creará identificaciones para todas las tarjetas de efectivo.
+- El servidor creará identificaciones para todas las `CashCard`.
 
-- Si tiene éxito, la **API** devolverá una respuesta con el código de estado: `201 CREATED`, que contiene el **URI** (ubicación) del nuevo recurso de tarjeta de efectivo en los encabezados de respuesta.
+- Si tiene éxito, la **API** devolverá una respuesta con el código de estado: `201 CREATED`, que contiene el **URI** (ubicación) del nuevo recurso de `CashCard` en los encabezados de respuesta.
 
 ¡En el laboratorio, implementaremos estas decisiones!

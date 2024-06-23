@@ -60,7 +60,7 @@ Este desacoplamiento es importante, ya que nos ayuda a hacer los cambios que nec
 ### Prepare to Refactor to use a Repository and Database
 La refactorización es el acto de alterar la implementación de un sistema de software sin alterar sus entradas, salidas o comportamiento.
 
-Nuestras pruebas nos permitirán cambiar la implementación de la gestión de datos de nuestra **API** de tarjetas de efectivo de datos codificados dentro de nuestro controlador, a la utilización de un repositorio y una base de datos.
+Nuestras pruebas nos permitirán cambiar la implementación de la gestión de datos de nuestra **API** de `CashCard` de datos codificados dentro de nuestro controlador, a la utilización de un repositorio y una base de datos.
 
 Este laboratorio es un ejemplo continuo del bucle de desarrollo de **Red, Green, Refactor** que aprendimos en una lección anterior.
 
@@ -150,13 +150,13 @@ java.lang.IllegalArgumentException: Could not resolve domain type of interface e
 Este error críptico significa que no hemos indicado qué objeto de datos debe administrar el `CashCardRepository`. Para nuestra aplicación, el "domain type" de este repositorio será la `CashCard`.
 
 4. Configure el `CashCardRepository`.
-Edite el `CashCardRepository` para especificar que administra los datos de la `CashCard` y que el tipo de datos del **ID** de la tarjeta de efectivo es largo.
+Edite el `CashCardRepository` para especificar que administra los datos de la `CashCard` y que el tipo de datos del **ID** de la `CashCard` es largo.
 ```java
     interface CashCardRepository extends CrudRepository<CashCard, Long> {
     }
 ```
 
-5. Configure la tarjeta de efectivo.
+5. Configure la `CashCard`.
 Cuando configuramos el repositorio como `CrudRepository<CashCard, Long>`, indicamos que el **ID** de `CashCard` es `Long`. Sin embargo, todavía tenemos que decirle a **Spring Data** qué campo es el **ID**.
 
 Edite la clase `CashCard` para configurar el id como el `@Id` para el `CashCardRepository`.
@@ -310,7 +310,7 @@ CashCardApplicationTests > shouldReturnACashCardWhenDataIsSaved() FAILED
    but was: 500 INTERNAL_SERVER_ERROR
 ```
 
-Esto significa que la API de la tarjeta de efectivo "se bloqueó".
+Esto significa que la API de la `CashCard` "se bloqueó".
 
 Necesitamos un poco más de información...
 
@@ -437,7 +437,7 @@ Estos pasan! Wooo Hooo!
 
 ¿Puedes adivinar por qué es esto?
 
-Recuerde que nuestra tarjeta de efectivo con `ID 99` y cantidad `123.45` es una tarjeta de efectivo falsa e inventada que solo queremos usar en nuestras pruebas. No queremos que nuestro sistema "real" o de producción cargue la tarjeta de efectivo `99` en el sistema... ¿qué pasaría con la tarjeta de efectivo `99` real?
+Recuerde que nuestra `CashCard` con `ID 99` y cantidad `123.45` es una `CashCard` falsa e inventada que solo queremos usar en nuestras pruebas. No queremos que nuestro sistema "real" o de producción cargue la `CashCard` `99` en el sistema... ¿qué pasaría con la `CashCard` `99` real?
 
 Spring nos ha proporcionado una característica poderosa: nos permite separar nuestros recursos solo de prueba de nuestros recursos principales cuando sea necesario.
 

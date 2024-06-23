@@ -14,9 +14,9 @@ Complete los siguientes pasos para usar **Spring Initializr** para configurar la
 
 3. Introduzca los siguientes valores junto a los campos de metadatos del proyecto correspondientes:
 	- **Grupo**: ejemplo
-	- **Artefacto**: tarjeta de efectivo
+	- **Artefacto**: `CashCard`
 	- **Nombre**: CashCard
-	- **Descripción**: Servicio de CashCard para tarjetas de efectivo familiares
+	- **Descripción**: Servicio de CashCard para `CashCard` familiares
 	- **Embalaje**: Tarro
 	- **Java**: 17
 

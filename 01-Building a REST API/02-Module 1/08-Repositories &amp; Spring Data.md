@@ -1,4 +1,4 @@
-En este punto de nuestro viaje de desarrollo, tenemos un sistema que devuelve un registro de tarjeta de efectivo codificado de nuestro controlador. Sin embargo, lo que realmente queremos es devolver datos reales, de una base de datos. ¡Así que continuemos con nuestro hilo de acero cambiando nuestra atención a la base de datos!
+En este punto de nuestro viaje de desarrollo, tenemos un sistema que devuelve un registro de `CashCard` codificado de nuestro controlador. Sin embargo, lo que realmente queremos es devolver datos reales, de una base de datos. ¡Así que continuemos con nuestro hilo de acero cambiando nuestra atención a la base de datos!
 
 **Spring Data** funciona con **Spring Boot** para simplificar la integración de la base de datos. Antes de entrar, hablemos brevemente sobre la arquitectura de **Spring Data**.
 

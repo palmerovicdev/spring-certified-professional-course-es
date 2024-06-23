@@ -256,7 +256,7 @@ URI locationOfNewCashCard = ucb
 
 Esto es construir un **URI** para la `CashCard` recién creada. Este es el **URI** que la persona que llama puede usar para obtener por medio de un **GET** la `CashCard` recién creada.
 
-Tenga en cuenta que `savedCashCard.id` se utiliza como identificador, que coincide con la especificación del endpoint **GET** de tarjetas de efectivo `/<CashCard.id>`.
+Tenga en cuenta que `savedCashCard.id` se utiliza como identificador, que coincide con la especificación del endpoint **GET** de `CashCard` `/<CashCard.id>`.
 
 - ¿De dónde viene `UriComponentsBuilder`?
 

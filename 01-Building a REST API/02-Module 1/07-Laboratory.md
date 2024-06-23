@@ -346,7 +346,7 @@ Hasta ahora, hemos ignorado el **ID** solicitado en el método de controlador de
 
 1. Añade un nuevo método de prueba.
 
-Escribamos una nueva prueba que espera ignorar las tarjetas de efectivo que no tienen una identificación de `99`. Usa `1000`, como lo hemos hecho en pruebas anteriores.
+Escribamos una nueva prueba que espera ignorar las `CashCard` que no tienen una identificación de `99`. Usa `1000`, como lo hemos hecho en pruebas anteriores.
 
 ```java
 @Test
