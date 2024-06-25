@@ -12,7 +12,8 @@ Puede hacer esto utilizando el Editor de la siguiente manera:
 - Aparecerá un cuadro de diálogo preguntando por el nuevo nombre de la clase. Introduzca `CashCardJsonTest.java`.
 
 Aquí hay una captura de pantalla que muestra los pasos anteriores:
-![[create-test-class-in-package.jpg.png]]
+
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/create-test-class-in-package.jpg.png">
 
 2. Edite el nuevo archivo resultante para que contenga el siguiente contenido:
 ```java
