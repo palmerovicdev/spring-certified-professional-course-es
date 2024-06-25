@@ -30,7 +30,7 @@ Complete los siguientes pasos para usar **Spring Initializr** para configurar la
 
    > Más adelante en el curso, agregarás dependencias adicionales sin usar Spring Initializr.
 
-![[initializr-dependencies.png]]
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets%2Finitializr-dependencies.png">
 
 6. Haga clic en el botón **CREAR**. **Spring Initializr** genera un archivo zip de código y lo descomprime en su directorio de inicio.
 8. Desde la línea de comandos en la pestaña **Terminal**, introduzca los siguientes comandos para usar la envoltura de gradle para crear y probar la aplicación generada.
