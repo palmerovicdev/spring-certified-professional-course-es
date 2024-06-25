@@ -4,7 +4,7 @@ Complete los siguientes pasos para usar **Spring Initializr** para configurar la
 
 1. Abra la pestaña del panel con la etiqueta **Spring Initializr**:
 
-![[https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets%2Finitializr-metadata.png]]
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets%2Finitializr-metadata.png">
 
 > Nota: Puede notar que el panel de control de **Initializr** tiene versiones diferentes a las que le mostramos aquí. El equipo de **Spring** actualiza continuamente el **Initializr** con las últimas versiones disponibles de **Spring** y **Spring Boot**.
 
