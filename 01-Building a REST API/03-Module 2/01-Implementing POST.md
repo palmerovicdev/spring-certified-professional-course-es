@@ -28,7 +28,8 @@ Para cada método, el estándar **HTTP** especifica si es **idempotente** o no. 
 
 Dado que hemos decidido que el servidor creará **ID** para cada operación de creación, la operación de creación en nuestra **API** "**NO**" es idempotente. Dado que el servidor creará un nuevo **ID** (en cada solicitud de creación), si llamas a **CREATE** dos veces, incluso con el mismo contenido, terminarás con dos objetos diferentes con el mismo contenido, pero con **ID** diferentes. Eso fue un bocado, así que para resumir: cada solicitud de creación generará una nueva identificación, por lo que no habrá **idempotencia**.
 
-![[idempotency.jpg]]
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/idempotency.jpg">
+
 Esto nos deja con las opciones **POST** y **PATCH**. Resulta que **REST** permite **POST** como uno de los métodos adecuados para crear operaciones, por lo que lo usaremos. Revisaremos **PATCH** en una lección posterior.
 
 ## The POST Request and Response
