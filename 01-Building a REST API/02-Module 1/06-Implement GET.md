@@ -5,7 +5,9 @@ En esta lección, aprenderás qué es **REST** y cómo usar **Spring Boot** para
 Comenciemos con una definición concisa de **REST**: Transferencia de Estado Representacional (Representational State Transfer). En un sistema **RESTful**, los objetos de datos se llaman Representaciones de Recursos (Resource Representations). El propósito de una **API RESTful** (Interfaz de Programación de Aplicaciones) es gestionar el estado de estos recursos.
 
 Dicho de otra manera, se puede pensar que el "estado" es "valor" y la "representación de recursos" es un "objeto" o "cosa". Por lo tanto, REST es solo una forma de gestionar los valores de las cosas. Se puede acceder a esas cosas a través de una API, y a menudo se almacenan en un almacén de datos persistente, como una base de datos.
-![[rest-http-flow.png]]
+
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/rest-http-flow.png">
+
 Un concepto mencionado con frecuencia cuando se habla de REST es **CRUD**. CRUD significa "create, read, update y delete". Estas son las cuatro operaciones básicas que se pueden realizar en objetos de una base de datos. Aprenderemos que REST tiene directrices específicas para implementar cada una.
 
 Otro concepto común asociado con REST es el Protocolo de Transferencia de Hipertexto (HTTP). En **HTTP**, una persona que llama envía una solicitud a un URI. Un servidor web recibe la solicitud y la dirige a un controlador de solicitudes. El controlador crea una respuesta, que luego se envía de vuelta a la persona que llama.
@@ -92,7 +94,8 @@ class CashCardController {
 
 Eso es todo lo que se necesita para decirle a Spring: "crear un controlador REST". El Controlador se inyecta en Spring Web, que enruta las solicitudes de API (manejadas por el Controlador) al método correcto.
 
-![[webcontroller-implementingGET.jpg]]
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/webcontroller-implementingGET.jpg">
+
 Un método de controlador puede ser designado como un método de controlador, que se llamará cuando se recibe una solicitud que el método sabe cómo manejar (llamada "solicitud de coincidencia"). ¡Vamos a escribir un método de controlador de solicitudes de lectura! Aquí hay un comienzo:
   
 ```java
