@@ -9,7 +9,7 @@ Los padres a menudo carecen de una manera fácil de administrar (es decir, envia
 
 Utilizará **Spring Boot** para avanzar desde la creación de una sola `CashCard` en una base de datos hasta permitir la edición, eliminación y visualización de múltiples `CashCard` y, finalmente, proteger su aplicación contra el acceso no autorizado y los exploits no deseados.
 
-![[NEWcardUI.png]]
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/NEWcardUI.png">
 
 ## What Will You Learn?
 
