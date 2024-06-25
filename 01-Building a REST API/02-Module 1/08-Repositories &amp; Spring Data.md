@@ -12,7 +12,7 @@ Un marco arquitectónico común que divide estas capas, normalmente por función
 
 El repositorio es la interfaz entre la aplicación y la base de datos, y proporciona una abstracción común para cualquier base de datos, lo que facilita el cambio a una base de datos diferente cuando sea necesario.
 
-![[layers.png]]
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/layers.png">
 
 Como buena noticia, **Spring Data** proporciona una colección de herramientas sólidas de gestión de datos, incluidas las implementaciones del patrón del repositorio.
 
