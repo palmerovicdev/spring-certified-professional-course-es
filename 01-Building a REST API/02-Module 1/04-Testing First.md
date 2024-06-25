@@ -11,7 +11,9 @@ Otro beneficio de **"test-driving"** es que las pruebas te guían para escribir 
 ## The Testing Pyramid
 
 Se pueden escribir diferentes pruebas en diferentes niveles del sistema. En cada nivel, hay un equilibrio entre la velocidad de ejecución, el "costo" de mantener la prueba y la confianza que aporta a la corrección del sistema. Esta jerarquía a menudo se representa como una "pirámide de pruebas".
-![[99-Assets/test-pyramid.jpg]]
+
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/test-pyramid.jpg">
+
 **Pruebas unitarias (Unit Tests)**: Una prueba unitaria ejerce una pequeña **"unidad"** del sistema que está aislada del resto del sistema. Deberían ser simples y rápidos. Quieres una alta proporción de pruebas unitarias en tu pirámide de pruebas, ya que son clave para diseñar un software altamente cohesivo y poco acoplado.
 
 **Pruebas de integración (Integration Tests)**: Las pruebas de integración ejercen un subconjunto del sistema y pueden ejercer grupos de unidades en una sola prueba. Son más complicados de escribir y mantener, y se ejecutan más lentamente que las pruebas unitarias.
