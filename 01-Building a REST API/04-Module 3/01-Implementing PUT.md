@@ -1,4 +1,4 @@
-~~# Implementing `PUT`
+# Implementing `PUT`
 
 Hasta ahora podemos crear y recuperar `CashCard`. 
 ¡El siguiente paso lógico es la posibilidad de ajustar el saldo de una Card!
