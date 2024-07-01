@@ -17,11 +17,11 @@ Response:
 
 Devolveremos el código de estado `204 NO CONTENT` para una eliminación exitosa, pero hay casos adicionales:
 
-| Response Code	   | Use Case                                                                                                    |
-|------------------|-------------------------------------------------------------------------------------------------------------|
-| `204 NO CONTENT` | - The record exists, and <br> -The Principal is authorized, and <br> - The record was successfully deleted. |
-| `404 NOT FOUND`  | - The record does not exist (a non-existent `ID` was sent).                                                 |
-| `404 NOT FOUND`  | - The record does exist but the Principal is not the owner.                                                 |
+| Response Code	   | Use Case                                                                                                     |
+|------------------|--------------------------------------------------------------------------------------------------------------|
+| `204 NO CONTENT` | - The record exists, and <br> - The Principal is authorized, and <br> - The record was successfully deleted. |
+| `404 NOT FOUND`  | - The record does not exist (a non-existent `ID` was sent).                                                  |
+| `404 NOT FOUND`  | - The record does exist but the Principal is not the owner.                                                  |
 
 ¿Por qué devolvemos `404` para los casos "`ID` no existe" y "no autorizado para acceder a este `ID`"? Para no "filtrar" información: si la `API` arrojó resultados diferentes para los dos casos, entonces un usuario no autorizado podría descubrir `ID` específicas a las que no está autorizado a acceder.
 
