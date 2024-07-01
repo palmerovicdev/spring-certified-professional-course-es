@@ -30,11 +30,11 @@ private ResponseEntity<Iterable<CashCard>> findAll() {
 
 Sin embargo, resulta que hay mucho más en esta operación que simplemente devolver todas las `CashCard` en la base de datos. Algunas preguntas me vienen a la mente:
 
-1. ¿Cómo devuelvo solo las `CashCard` que posee el usuario? (¡Gran pregunta! Discutiremos esto en la próxima lección de Spring Security).
+### 1. ¿Cómo devuelvo solo las `CashCard` que posee el usuario? (¡Gran pregunta! Discutiremos esto en la próxima lección de Spring Security).
 
-2. ¿Y si hay cientos (o miles) de `CashCard`? ¿Debería la **API** devolver un número ilimitado de resultados o devolverlos en "partes"? Esto se conoce como **Paginación**.
+### 2. ¿Y si hay cientos (o miles) de `CashCard`? ¿Debería la **API** devolver un número ilimitado de resultados o devolverlos en "partes"? Esto se conoce como **Paginación**.
 
-3. ¿Deberían devolverse las `CashCard` en un orden en particular (es decir, deberían clasificarse)?
+### 3. ¿Deberían devolverse las `CashCard` en un orden en particular (es decir, deberían clasificarse)?
 
 Dejaremos la primera pregunta para más tarde, pero responderemos a las preguntas de paginación y clasificación de esta lección.
 
@@ -126,25 +126,25 @@ Ahora usemos **Spring Web** para extraer los datos para alimentar la funcionalid
 
 Ahora vamos a aprender cómo podemos componer un **URI** para el nuevo endpoint, paso a paso (hemos omitido el prefijo `https://dominio` a continuación):
 
-1. Pedir la segunda pagina
+### 1. Pedir la segunda pagina
 
 ```java
 /cashcards**?page=1**
 ```
 
-2. …donde una página tiene una longitud de 3
+### 2. …donde una página tiene una longitud de 3
 
 ```java
 /cashcards?page=1**&size=3**
 ```
 
-3. …ordenado por el saldo actual de la `CashCard`
+### 3. …ordenado por el saldo actual de la `CashCard`
 
 ```java
 /cashcards?page=1&size=3**&sort=amount**
 ```
 
-4. …en orden descendente (el saldo más alto primero)
+### 4. …en orden descendente (el saldo más alto primero)
 
 ```java
 /cashcards?page=1&size=3&sort=amount**,desc**

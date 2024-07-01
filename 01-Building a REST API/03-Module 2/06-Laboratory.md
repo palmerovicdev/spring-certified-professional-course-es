@@ -92,7 +92,7 @@ Tomemos un tiempo para familiarizarnos con estas actualizaciones.
 
 Podemos añadir soporte para **Spring Security** añadiendo la dependencia adecuada.
 
-1. Añade la dependencia.
+### 1. Añade la dependencia.
 
 Añade lo siguiente al archivo `build.gradle` en la sección de dependencias `{}`:
 
@@ -105,7 +105,7 @@ Añade lo siguiente al archivo `build.gradle` en la sección de dependencias `{}
         ...
 ```
 
-2. Ejecuta las pruebas.
+### 2. Ejecuta las pruebas.
 
 Hemos añadido capacidades de **Spring Security** a nuestra aplicación, pero no hemos cambiado ningún código.
 
@@ -148,7 +148,7 @@ En la mayoría de los casos, nuestras pruebas esperan que los datos de `CashCard
 
 ¿Por qué crees que todas las pruebas de nuestra **API** de `CashCard` están fallando después de añadir la dependencia de Spring Security?
 
-3. Entiende por qué todo está roto.
+### 3. Entiende por qué todo está roto.
 
 ¿Qué ha pasado aquí?
 
@@ -194,7 +194,7 @@ class SecurityConfig {
 }
 ```
 
-1. Descomente `SecurityConfig.java` y revise.
+### 1. Descomente `SecurityConfig.java` y revise.
 
 Abre `SecurityConfig.java`.
 
@@ -222,7 +222,7 @@ class SecurityConfig {
 
 Nota: Por favor, ignore el método `passwordEncoder()` por ahora.
 
-2. Habilitar **Spring Security**.
+### 2. Habilitar **Spring Security**.
 
 Por el momento, `SecurityConfig` es solo una clase **Java** sin referencia, ya que nada la está usando.
 
@@ -241,7 +241,7 @@ Vamos a convertir `SecurityConfig` en nuestra configuración **Bean** para **Spr
     ...
 ```
 
-3. Entender las anotaciones.
+### 3. Entender las anotaciones.
 
 ```java
 @Configuration
@@ -257,7 +257,7 @@ SecurityFilterChain filterChain
 
 **Spring Security** espera que un bean configure su cadena de filtros, de la que aprendiste en la lección de **Simple Spring Security**. Anotar un método que devuelve una cadena de filtros de seguridad con el `@Bean` satisface esta expectativa.
 
-4. Correr las pruebas.
+### 4. Correr las pruebas.
 
 Cuando ejecutes las pruebas, verás que una vez más todas las pruebas pasan, excepto la prueba para crear una nueva `CashCard` a través de un **POST**.
 
@@ -280,7 +280,7 @@ Hasta ahora hemos arrancado **Spring Security**, pero en realidad no hemos asegu
 
 Ahora aseguremos nuestra aplicación configurando la autenticación básica.
 
-1. Configurar la autenticación básica.
+### 1. Configurar la autenticación básica.
 
 Actualice `SecurityConfig.filterChain` con lo siguiente para habilitar la autenticación básica:
 
@@ -297,7 +297,7 @@ Actualice `SecurityConfig.filterChain` con lo siguiente para habilitar la autent
     }
 ```
 
-2. Comprender la configuración de **Spring Security**.
+### 2. Comprender la configuración de **Spring Security**.
 
 ¡Son muchas llamadas de método!
 
@@ -311,7 +311,7 @@ Aquí, si explicamos el patrón de construcción de **Spring Security** en un le
 
 Nota: Hablaremos sobre la seguridad de **CSRF** más adelante en este laboratorio.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 ¿Qué pasará cuando hagamos nuestras pruebas?
 
@@ -338,7 +338,7 @@ Para nuestras pruebas, configuraremos un servicio de solo prueba que **Spring Se
 
 Al igual que configuramos una base de datos en memoria usando **H2** para probar **Spring Data**, configuraremos un servicio en memoria con usuarios de prueba para probar **Spring Security**.
 
-1. Configure un servicio de detalles de usuario de solo prueba.
+### 1. Configure un servicio de detalles de usuario de solo prueba.
 
 ¿Qué nombre de usuario y contraseña debemos enviar en nuestras solicitudes **HTTP** de prueba?
 
@@ -369,7 +369,7 @@ Esta configuración de `UserDetailsService` debería ser comprensible: configure
 
 El contenedor **IoC** de **Spring** encontrará el `UserDetailsService` **Bean** y **Spring Data** lo usará cuando sea necesario.
 
-2. Configurar la autenticación básica en las pruebas **HTTP**.
+### 2. Configurar la autenticación básica en las pruebas **HTTP**.
 
 Seleccione un método de prueba que utilice `restTemplate.getForEntity` y actualícelo con la autenticación básica para `sarah1`.
 
@@ -382,7 +382,7 @@ Seleccione un método de prueba que utilice `restTemplate.getForEntity` y actual
         ...
 ```
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 ¡La prueba actualizada que proporciona lo básico ahora debería pasar!
 
@@ -393,7 +393,7 @@ Seleccione un método de prueba que utilice `restTemplate.getForEntity` y actual
     ...
 ```
 
-4. Actualice todas las pruebas restantes de `CashCardApplicationTests` y vuelva a ejecutar las pruebas.
+### 4. Actualice todas las pruebas restantes de `CashCardApplicationTests` y vuelva a ejecutar las pruebas.
 
 Ahora, para un poco de tedio: Actualice todas las pruebas restantes basadas en `restTemplate` para proporcionar `.withBasicAuth("sarah1", "abc123")` con cada solicitud **HTTP**.
 
@@ -409,7 +409,7 @@ BUILD SUCCESSFUL in 9s
 
 ¡Enhorabuena, has implementado y probado la autenticación básica!
 
-5. Verifique la autenticación básica con pruebas adicionales.
+### 5. Verifique la autenticación básica con pruebas adicionales.
 
 Ahora agreguemos pruebas que esperan una respuesta `401 UNAUTHORIZED` cuando se envían credenciales incorrectas utilizando la autenticación básica.
 
@@ -446,7 +446,7 @@ Aquí implementaremos el **Role-Based Access Control** (RBAC).
 
 Es probable que un servicio de usuario proporcione acceso a muchos usuarios autenticados, pero solo se debe permitir a los "`CashCard` owners" acceder a las **Family Cash Card** administradas por nuestra aplicación. Hagamos esas actualizaciones ahora.
 
-1. Añade usuarios y roles al `UserDetailsService Bean`.
+### 1. Añade usuarios y roles al `UserDetailsService Bean`.
 
 Para probar la autorización, necesitamos varios usuarios de prueba con una variedad de roles.
 
@@ -473,7 +473,7 @@ Además, agreguemos un nuevo usuario llamado "`hank-owns-no-cards`" con el rol d
     }
 ```
 
-2. Prueba para la verificación del rol.
+### 2. Prueba para la verificación del rol.
 
 Agreguemos una prueba que fallará al principio, pero que pasará cuando implementemos completamente la autorización.
 
@@ -493,7 +493,7 @@ void shouldRejectUsersWhoAreNotCardOwners() {
 
 ¡Tienes razón! Tenlo en cuenta para más adelante en este laboratorio.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 Vemos que nuestra nueva prueba falla cuando la ejecutamos.
 
@@ -510,7 +510,7 @@ CashCardApplicationTests > shouldRejectUsersWhoAreNotCardOwners() FAILED
 
 Aunque hemos dado a los usuarios de prueba roles, no estamos haciendo cumplir la seguridad basada en roles.
 
-4. Habilitar la seguridad basada en roles.
+### 4. Habilitar la seguridad basada en roles.
 
 Edite `SecurityConfig.filterChain` para restringir el acceso solo a los usuarios con el rol de `CARD_OWNER`
 
@@ -527,7 +527,7 @@ Edite `SecurityConfig.filterChain` para restringir el acceso solo a los usuarios
     }
 ```
 
-5. Ejecuta las pruebas.
+### 5. Ejecuta las pruebas.
 
 ¡Vemos que nuestras pruebas pasan!
 
@@ -551,7 +551,7 @@ Para solucionar esto, actualizaremos nuestras pruebas, `CashCardRepository` y `C
 
 - A continuación, actualizaremos nuestro CashCardController para garantizar que solo se utilice el PROPIETARIO correcto.
 
-### Learning Moment: Best Practices
+#### Learning Moment: Best Practices
 
 ¡Espera! ¿Este laboratorio no tiene que ver con el proyecto **Spring Security** y su increíble tecnología? ¿**Spring Security** no puede hacer toda esta validación de la propiedad para que no tengamos que modificar nuestros repositorios y controladores?
 
@@ -559,7 +559,7 @@ Respuesta: Este laboratorio y la lección asociada tratan sobre la seguridad de 
 
 Ahora, actualicemos nuestras pruebas y `CashCardRepository`.
 
-1. Añade una nueva `CashCard` para un usuario llamado `kumar2`.
+### 1. Añade una nueva `CashCard` para un usuario llamado `kumar2`.
 
 Actualice `src/test/resources/data.sql` con un registro de `CashCard` propiedad de un usuario diferente:
 
@@ -568,7 +568,7 @@ Actualice `src/test/resources/data.sql` con un registro de `CashCard` propiedad 
     INSERT INTO CASH_CARD(ID, AMOUNT, OWNER) VALUES (102, 200.00, 'kumar2');
 ```
 
-2. Prueba que los usuarios no pueden acceder a los datos de los demás.
+### 2. Prueba que los usuarios no pueden acceder a los datos de los demás.
 
 Agreguemos una prueba que afirma explícitamente que nuestra `API` devuelve un `404 NOT_FOUND` cuando un usuario intenta acceder a una `CashCard` que no posee.
 
@@ -586,7 +586,7 @@ Ahora haremos que `sarah1` intente acceder a los datos de `kumar2`.
     }
 ```
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 ¿Qué crees que pasará cuando ejecutemos las pruebas? Vamos a averiguarlo.
 
@@ -620,7 +620,7 @@ CashCardApplicationTests > shouldReturnAllCashCardsWhenListIsRequested() FAILED
 
 Evitemos que los usuarios accedan a los datos de los demás.
 
-4. Actualice el `CashCardRepository` con nuevos métodos `findBy`....
+### 4. Actualice el `CashCardRepository` con nuevos métodos `findBy`....
 
 Lo más sencillo que podemos hacer es filtrar siempre nuestro acceso a los datos por parte del propietario de `CashCard`.
 
@@ -660,7 +660,7 @@ Pero no estamos usando esta nueva funcionalidad. Hagamos esas actualizaciones al
 
 Al igual que con otros objetos útiles, el Director está disponible para que lo usemos en nuestro Controlador. El Director tiene la información autenticada y autorizada de nuestro usuario.
 
-1. Actualice el endpoint `GET` by `ID` del controlador.
+### 1. Actualice el endpoint `GET` by `ID` del controlador.
 
 Actualice el `CashCardController` para pasar la información del principal al nuevo método `findByIdAndOwner` de nuestro repositorio.
 
@@ -679,7 +679,7 @@ private ResponseEntity<CashCard> findById(@PathVariable Long requestedId, Princi
 
 Tenga en cuenta que `principal.getName()` devolverá el nombre de usuario proporcionado por **Basic Auth**.
 
-2. Ejecuta las pruebas.
+### 2. Ejecuta las pruebas.
 
 El `GET` está pasando, pero nuestras pruebas para las listas de `CashCard` están fallando.
 
@@ -694,7 +694,7 @@ El `GET` está pasando, pero nuestras pruebas para las listas de `CashCard` est�
     ...
 ```
 
-3. Actualice el endpoint `GET` del controlador para las listas.
+### 3. Actualice el endpoint `GET` del controlador para las listas.
 
 Edite `CashCardController` para filtrar las listas por propietario.
 
@@ -709,7 +709,7 @@ private ResponseEntity<List<CashCard>> findAll(Pageable pageable, Principal prin
 
 Una vez más, obtenemos el nombre de usuario autenticado del método `principal.getName()`.
 
-4. Ejecuta las pruebas.
+### 4. Ejecuta las pruebas.
 
 ¡Todos pasan!
 
@@ -727,7 +727,7 @@ Respuesta: ¡Corremos el riesgo de permitir que los usuarios creen `CashCards` p
 
 Asegurémonos de que solo el Principal autorizado y autenticado sea propietario de las `CashCards` que está creando.
 
-1. Actualice la prueba **POST**.
+### 1. Actualice la prueba **POST**.
 
 Para demostrar que no necesitamos enviar un propietario, usemos null como propietario de `CashCard`.
 
@@ -737,7 +737,7 @@ void shouldCreateANewCashCard() {
   ...
 ```
 
-2. Ejecute las pruebas.
+### 2. Ejecute las pruebas.
 
 ¿Qué crees que pasará cuando hagamos las pruebas? Probablemente fracasarán, pero ¿puedes adivinar por qué?
 
@@ -778,7 +778,7 @@ Qué significa todo esto? Significa que aunque las pruebas (y los usuarios) ven 
 
 Entonces, ¿por qué no vemos un `500 INTERNAL_SERVER_ERROR`, que es más apropiado para un servidor que falla?
 
-## Learning Moment: Spring Security and Error Handling
+#### Learning Moment: Spring Security and Error Handling
 
 Nuestro Controller está devolviendo un `403 FORBIDDEN` en lugar de un `500 INTERNAL_SERVER_ERROR` porque **Spring Security** está implementando una buena práctica sobre cómo manejar errores en **Spring Web**.
 
@@ -789,7 +789,7 @@ Para evitar "revelar" información sobre nuestra aplicación, **Spring Security*
 
 Ahora que entendemos lo que está sucediendo, hagamos que el `Controller` se comporte de la manera correcta.
 
-3. Actualice el endpoint `POST` en el controller.
+### 3. Actualice el endpoint `POST` en el controller.
 
 Una vez más, usaremos el Principal proporcionado para asegurarnos de que se guarde al propietario correcto con la nueva `CashCard`.
 
@@ -801,7 +801,7 @@ private ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardReq
   ...
 ```
 
-4. Ejecuta las pruebas.
+### 4. Ejecuta las pruebas.
 
 ¡Todos pasan!
 

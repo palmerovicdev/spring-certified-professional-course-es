@@ -1,12 +1,12 @@
 ## Configuraciones en el application.properties
 Para configurar Jackson en tu archivo `application.properties`, puedes utilizar varias propiedades específicas de Spring Boot que afectan el comportamiento de la serialización y deserialización JSON. Aquí te muestro algunas de las más comunes relacionadas con Jackson:
 
-1. **Ignorar propiedades nulas**: 
+### 1. **Ignorar propiedades nulas**: 
 
 - Para ignorar las propiedades nulas durante la serialización, ya has mencionado la propiedad correcta:
 `spring.jackson.default-property-inclusion=non_null`
 
-2. **Indicar si se deben incluir o excluir ciertas propiedades**:
+### 2. **Indicar si se deben incluir o excluir ciertas propiedades**:
 
 -  Para especificar una lista de propiedades a incluir, usa:
 `spring.jackson.serialization.inclusion=include spring.jackson.serialization.include=propiedad1,propiedad2`
@@ -14,12 +14,12 @@ Para configurar Jackson en tu archivo `application.properties`, puedes utilizar
 - Para especificar una lista de propiedades a excluir, usa:
 `spring.jackson.serialization.inclusion=exclude spring.jackson.serialization.exclude=propiedad1,propiedad2`
 
-3. **Configurar el formato de fecha**:
+### 3. **Configurar el formato de fecha**:
 
 - Para establecer un patrón de fecha personalizado, utiliza:
 `spring.jackson.date-format=yyyy-MM-dd'T'HH:mm:ssZ`
 
-4. **Habilitar o deshabilitar la escritura de fechas como timestamps**:
+### 4. **Habilitar o deshabilitar la escritura de fechas como timestamps**:
 
 -  Para escribir fechas como timestamps (números largos), usa:
 `spring.jackson.time-zone=UTC spring.jackson.write-dates-as-timestamps=true`
@@ -27,12 +27,12 @@ Para configurar Jackson en tu archivo `application.properties`, puedes utilizar
 - Para escribir fechas en un formato legible por humanos, usa:
 `spring.jackson.write-dates-as-timestamps=false`
 
-5. **Permitir o no caracteres especiales en nombres de propiedades**:
+### 5. **Permitir o no caracteres especiales en nombres de propiedades**:
 
 - Para permitir caracteres especiales en nombres de propiedades, usa:
 `spring.jackson.mapper.allow-non-standard-characters=true`
 
-6. **Habilitar o deshabilitar la lectura de propiedades desconocidas**:
+### 6. **Habilitar o deshabilitar la lectura de propiedades desconocidas**:
 
 - Para permitir la lectura de propiedades desconocidas sin lanzar errores, usa:
 `spring.jackson.deserialization.fail-on-unknown-properties=false`
@@ -49,7 +49,7 @@ public class JacksonConfiguration {
 	}
 }
 ```
-1. `Si se hace esta config` se deben cambiar los `LocalDate` por `Date` de `java.util` debido a que por defecto `Jackson` no soporta conversion de este tipo.
+### 1. `Si se hace esta config` se deben cambiar los `LocalDate` por `Date` de `java.util` debido a que por defecto `Jackson` no soporta conversion de este tipo.
 
 ## Annotations
 La anotación `@JacksonNaming` en Java se utiliza para especificar la estrategia de nomenclatura que Jackson debe usar al serializar y deserializar objetos JSON. La estrategia `SnakeCaseStrategy` es una de las muchas disponibles y convierte los nombres de las propiedades del objeto a minúsculas con guiones bajos (snake case). Aquí te muestro cómo configurarla y algunas otras estrategias comunes:

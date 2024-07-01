@@ -24,13 +24,13 @@ Se pueden escribir diferentes pruebas en diferentes niveles del sistema. En cada
 
 A los equipos de desarrollo de software les encanta moverse rápido. Entonces, ¿cómo vas rápido para siempre? Al mejorar y simplificar continuamente su refactorización de código. Una de las únicas formas en que puedes refactorizar de forma segura es cuando tienes un conjunto de pruebas de confianza. Por lo tanto, el mejor momento para refactorizar el código en el que te estás enfocando actualmente es durante el ciclo **TDD**. Esto se llama el bucle de desarrollo **red, green & refactor**:
 
-1. **Rojo (Red)**: Escribe una prueba fallida para la funcionalidad deseada.
+ 1. **Rojo (Red)**: Escribe una prueba fallida para la funcionalidad deseada.
 
-2. **Verde (Green)**: Implementa lo más simple que puede funcionar para aprobar la prueba.
+ 2. **Verde (Green)**: Implementa lo más simple que puede funcionar para aprobar la prueba.
 
-3. **Refactorización (Refactoring)**: Busque oportunidades para simplificar, reducir la duplicación o mejorar el código sin cambiar ningún comportamiento, para refactorizar.
+ 3. **Refactorización (Refactoring)**: Busque oportunidades para simplificar, reducir la duplicación o mejorar el código sin cambiar ningún comportamiento, para refactorizar.
 
-4. **¡Repite! (Repeat)**
+ 4. **¡Repite! (Repeat)**
 
 A lo largo de los laboratorios de este curso, practicarás el bucle **Red, Green, Refactor** para desarrollar la **API REST** de **Family Cash Card**.
 

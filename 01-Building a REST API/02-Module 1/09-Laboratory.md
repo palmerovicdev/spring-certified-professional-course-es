@@ -1,6 +1,6 @@
 # Changes from Previous Workshops
 Si ha tomado los laboratorios anteriores en este curso, notará los siguientes cambios, que necesitamos realizar para que este laboratorio sea más fácil de entender y completar.
-### Test Resource Files
+## Test Resource Files
 Hemos proporcionado los siguientes archivos que utilizará en este laboratorio.
 - `src/main/resources/schema.sql`
 - `src/test/resources/data.sql`
@@ -39,7 +39,7 @@ Nuestra **API REST** de **Family Cash Card** se basa actualmente en los datos de
 
 Sabemos que un controlador web no debería gestionar los datos. Esto es una violación de la separación de preocupaciones. El tráfico web es tráfico web, los datos son datos y el software saludable tiene arquitecturas dedicadas a cada área.
 
-1. Revise `CashCardController`.
+### 1. Revise `CashCardController`.
 Tenga en cuenta líneas como las siguientes:
 ```java
 ... 
@@ -52,7 +52,7 @@ return ResponseEntity.ok(cashCard);
 ```
 Esto es gestión de datos. Nuestro Controlador no debería preocuparse por verificar las ID o crear datos.
 
-2. Revise `CashCardApplicationTests`.
+### 2. Revise `CashCardApplicationTests`.
 Curiosamente, si bien nuestras pruebas hacen afirmaciones sobre los datos, no se basan ni especifican cómo se crean o gestionan esos datos.
 
 Este desacoplamiento es importante, ya que nos ayuda a hacer los cambios que necesitamos.
@@ -70,7 +70,7 @@ A medida que refactorizamos, nuestras pruebas fallarán periódicamente cuando l
 
 Este proyecto se creó originalmente utilizando el **Spring Initializr**, que nos permitió añadir automáticamente dependencias a nuestro proyecto. Sin embargo, ahora debemos añadir manualmente dependencias a nuestro proyecto.
 
-1. Añade dependencias para **Spring Data** y una base de datos.
+### 1. Añade dependencias para **Spring Data** y una base de datos.
 En `build.gradle`:
 ```groovy
 dependencies { 
@@ -81,7 +81,7 @@ dependencies {
 }
 ```
 
-2. Entendiendo las dependencias.
+### 2. Entendiendo las dependencias.
 Las dos dependencias que añadimos están relacionadas, pero son diferentes.
 ```groovy
 implementation 'org.springframework.data:spring-data-jdbc'
@@ -100,7 +100,7 @@ Aquí elegiremos usar **Spring Data JDBC**. De la [documentación](https://sprin
 
 Los marcos de gestión de bases de datos solo funcionan si tienen una base de datos vinculada. **H2** es una base de datos **SQL** "muy rápida y de código abierto, **API JDBC**" implementada en **Java**. Funciona a la perfección con **Spring Data JDBC**.
 
-3. Corre los tests.
+### 3. Corre los tests.
 Esto instalará las dependencias y verificará que su adición no haya roto nada.
 
 Siempre usaremos la prueba `./gradlew` para ejecutar nuestras pruebas.
@@ -116,7 +116,7 @@ BUILD SUCCESSFUL in 4s
 
 # Create the CashCardRepository
 
-1. Crea la clase `CashCardRepository`.
+### 1. Crea la clase `CashCardRepository`.
 Crea `src/main/java/example/cashcard/CashCardRepository.java` y ha que se extienda `CrudRepository`.
 ```java
     package example.cashcard;
@@ -127,14 +127,14 @@ Crea `src/main/java/example/cashcard/CashCardRepository.java` y ha que se extien
     }
 ```
 
-2. Entendiendo `extends CrudRepository`.
+### 2. Entendiendo `extends CrudRepository`.
 Aquí es donde aprovechamos la magia de **Spring Data** y su patrón de repositorio de datos.
 
 `CrudRepository` es una interfaz proporcionada por **Spring Data**. Cuando lo ampliamos (u otras subinterfaces del repositorio de **Spring Data**), **Spring Boot** y **Spring Data** trabajan juntos para generar automáticamente los métodos **CRUD** que necesitamos para interactuar con una base de datos.
 
 Utilizaremos uno de estos métodos **CRUD**, `findById`, más adelante en el laboratorio.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 Podemos ver que todo se compila, sin embargo, nuestra aplicación se bloquea gravemente al iniciarse. Buscando en los mensajes de error, encontramos esto:
 ```shell
 [~/exercises] $ ./gradlew test
@@ -149,14 +149,14 @@ java.lang.IllegalArgumentException: Could not resolve domain type of interface e
 
 Este error críptico significa que no hemos indicado qué objeto de datos debe administrar el `CashCardRepository`. Para nuestra aplicación, el "domain type" de este repositorio será la `CashCard`.
 
-4. Configure el `CashCardRepository`.
+### 4. Configure el `CashCardRepository`.
 Edite el `CashCardRepository` para especificar que administra los datos de la `CashCard` y que el tipo de datos del **ID** de la `CashCard` es largo.
 ```java
     interface CashCardRepository extends CrudRepository<CashCard, Long> {
     }
 ```
 
-5. Configure la `CashCard`.
+### 5. Configure la `CashCard`.
 Cuando configuramos el repositorio como `CrudRepository<CashCard, Long>`, indicamos que el **ID** de `CashCard` es `Long`. Sin embargo, todavía tenemos que decirle a **Spring Data** qué campo es el **ID**.
 
 Edite la clase `CashCard` para configurar el id como el `@Id` para el `CashCardRepository`.
@@ -173,7 +173,7 @@ No olvides añadir la nueva importación.
     }
 ```
 
-6. Corre las pruebas.
+### 6. Corre las pruebas.
 
 ```shell
 [~/exercises] $ ./gradlew test
@@ -187,7 +187,7 @@ Las pruebas pasan, pero no hemos hecho ningún cambio significativo en el códig
 
 Aunque hemos configurado nuestras clases `CashCard` y `CashCardRepository`, no hemos utilizado el nuevo `CashCardRepository` para gestionar nuestros datos de `CashCard`. Hagámoslo ahora.
 
-1. Inyecte el `CashCardRepository` en `CashCardController`.
+### 1. Inyecte el `CashCardRepository` en `CashCardController`.
 Edita `CashCardController` para aceptar un `CashCardRepository`.
 ```java
 @RestController
@@ -201,14 +201,14 @@ class CashCardController {
    ...
 ```
 
-2. Ejecuta las pruebas.
+### 2. Ejecuta las pruebas.
 Si ejecutas las pruebas ahora, todas pasarán, a pesar de que no hay otros cambios en la base de código utilizando el nuevo constructor requerido `CashCardController (CashCardRepository cashCardRepository)`.
 
 ```shell
 BUILD SUCCESSFUL in 7s
 ```
 
-3. Entonces, ¿cómo es esto posible?
+### 3. Entonces, ¿cómo es esto posible?
 
 ¡He aquí la configuración automática y la inyección de construcción!
 
@@ -216,19 +216,19 @@ La configuración automática de **Spring** está utilizando su marco de inyecci
 
 ¡Cosas mágicas!
 
-### Learning Moment: Remove the DI
+#### Learning Moment: Remove the DI
 
 Acabamos de ver la gloria de la configuración automática y la inyección del constructor.
 
 Pero, ¿qué pasa cuando desactivamos esta maravilla?
 
-1. Cambie temporalmente el `CashCardRepository` para eliminar la implementación de `CrudRepository`.
+### 1. Cambie temporalmente el `CashCardRepository` para eliminar la implementación de `CrudRepository`.
 ```java
     interface CashCardRepository {
     }
 ```
 
-2. Compile el proyecto y note el fallo.
+### 2. Compile el proyecto y note el fallo.
 
 ```shell
 [~/exercises] $ ./gradlew build
@@ -244,7 +244,7 @@ Pistas como `NoSuchBeanDefinitionException`, `No qualifying bean`, y `expected a
 
 Podemos satisfacer este requisito de **DI** extendiendo el **CrudRepository**.
 
-3. Deshaz todo.
+### 3. Deshaz todo.
 ```java
 interface CashCardRepository extends CrudRepository<CashCard, Long> { }
 ```
@@ -253,7 +253,7 @@ interface CashCardRepository extends CrudRepository<CashCard, Long> { }
 
 ¡Por fin estás listo para usar el `CashCardRepository`!
 
-1. Encuentra la `CashCard` usando `findById`.
+### 1. Encuentra la `CashCard` usando `findById`.
 
 La interfaz de `CrudRepository` proporciona muchos métodos útiles, incluyendo `findById(ID id)`.
 
@@ -273,7 +273,7 @@ Actualice el `CashCardController` para utilizar este método en el `CashCardRepo
     }
 ```
 
-2. Entender los cambios.
+### 2. Entender los cambios.
 
 Acabamos de alterar `CashCardController.findById` de varias maneras importantes.
 
@@ -299,7 +299,7 @@ Si `cashCardOptional.isPresent()` es verdadero, entonces el repositorio encontr�
 
 Si no, el repositorio no ha encontrado la `CashCard`.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 Podemos ver que las pruebas fallan con un `500 INTERNAL_SERVER_ERROR`.
 
@@ -332,7 +332,7 @@ Actualicemos temporalmente la sección de salida de prueba de `build.gradle` con
     }
 ```
 
-4. Vuelve a ejecutar las pruebas.
+### 4. Vuelve a ejecutar las pruebas.
 
 Tenga en cuenta que la salida de la prueba es mucho más detallada.
 
@@ -362,7 +362,7 @@ Necesitamos ayudar a **Spring Data** a configurar la base de datos y cargar algu
 
 Nota: Proporcionar `schema.sql` y `data.sql` es una de las muchas formas en que **Spring** proporciona para inicializar fácilmente una base de datos. Para obtener más información, lea la [documentación de Spring Framework](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts).
 
-1. Editar `schema.sql`.
+### 1. Editar `schema.sql`.
 
 Como se mencionó anteriormente, **Spring Data** configurará automáticamente una base de datos para las pruebas si proporcionamos el archivo correcto en la ubicación correcta.
 
@@ -380,13 +380,13 @@ Edite `src/main/resources/schema.sql` y elimine el comentario en bloque `/* ... 
     );
 ```
 
-2. Entender schema.sql.
+### 2. Entender schema.sql.
 
 Un esquema de base de datos es un "plan" de cómo se almacenan los datos en una base de datos. Aquí no cubriremos los esquemas de la base de datos en profundidad.
 
 Nuestro esquema de base de datos refleja el objeto `CashCard` que entendemos, que contiene un identificador y una cantidad.
 
-3. Vuelve a ejecutar las pruebas.
+### 3. Vuelve a ejecutar las pruebas.
 
 Nota: Si la salida de la prueba es demasiado detallada, revierta el cambio en `build.gradle` realizado anteriormente.
 
@@ -405,7 +405,7 @@ Aunque hemos ayudado a **Spring Data** a crear una base de datos de prueba al de
 
 ¡Vamos a cargar algunos datos!
 
-4. Cargar datos de prueba desde data.sql.
+### 4. Cargar datos de prueba desde data.sql.
 
 **Spring Data** no solo puede crear nuestra base de datos de pruebas, sino que también puede cargar datos en ella, que podemos usar en nuestras pruebas.
 
@@ -419,7 +419,7 @@ INSERT INTO CASH_CARD(ID, AMOUNT) VALUES (99, 123.45);
 
 Esta declaración `SQL` inserta una fila en la tabla `CASH_CARD` con un `ID=99` y `AMOUNT=123.45`, que coincide con los valores que esperamos en nuestras pruebas.
 
-5. Corra los test otra vez.
+### 5. Corra los test otra vez.
 
 Estos pasan! Wooo Hooo!
 
@@ -431,7 +431,7 @@ Estos pasan! Wooo Hooo!
 
 ¡Éxito! Ahora estamos utilizando datos reales en nuestra **API**.
 
-### Learning Moment: `main` vs `test` resources
+#### Learning Moment: `main` vs `test` resources
 
 ¿Has notado que `src/main/resources/schema.sql` y `src/test/resources/data.sql` están en diferentes ubicaciones de recursos?
 

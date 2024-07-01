@@ -40,12 +40,12 @@ Lo importante de las siguientes secciones no es memorizar todos los detalles, si
 
 La diferencia importante es si el servidor debe generar el `URI` (que incluye el `ID` del recurso) o no. Así es como lo piensan `PUT` y `POST`:
 
-1. Si necesita que el servidor devuelva el `URI` del recurso creado (o los datos que usa para construir el `URI`), entonces debe usar `POST`.
+### 1. Si necesita que el servidor devuelva el `URI` del recurso creado (o los datos que usa para construir el `URI`), entonces debe usar `POST`.
 
 Este es el caso de nuestra API de `CashCard`: para crear una `CashCard`, proporcionamos el endpoint `POST` `/cashcards`. El `URI` real para la 
 `CashCard` creada depende del `ID` generado y lo proporciona el servidor, por ejemplo, `/cashcards/101` si el `ID` de la tarjeta creada es `101`.
 
-2. Alternativamente, cuando se conoce el `URI` del recurso en el momento de la creación (como es el caso en nuestro ejemplo de `API` de factura), puede 
+### 2. Alternativamente, cuando se conoce el `URI` del recurso en el momento de la creación (como es el caso en nuestro ejemplo de `API` de factura), puede 
 utilizar `PUT`.
 
 Para la `API` de factura, podríamos escribir un endpoint de creación que acepte solicitudes como `PUT` `/invoice/1234-567`. La llamada de lectura correspondiente utilizaría exactamente el mismo `URI`: `GET /invoice/1234-567`.

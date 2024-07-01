@@ -3,7 +3,7 @@ Aquí cubriremos una breve introducción a la biblioteca de pruebas de **JUnit**
 
 Las clases de prueba en un proyecto **Java** estándar están en el directorio `src/test`, no en `src/main`. En nuestro caso, hemos decidido poner nuestro código en el paquete `example.cashcard`, por lo que nuestros archivos de prueba deben estar en el directorio `src/test/java/example/cashcard`.
 
-1. Crea la clase `CashCardJsonTest`.
+### 1. Crea la clase `CashCardJsonTest`.
 Lo primero que tenemos que hacer es crear nuestra nueva clase de prueba en el directorio `src/test/java/example/cashcard`.
 Puede hacer esto utilizando el Editor de la siguiente manera:
 - Abra la sección **JAVA PROJECTS** en la parte inferior izquierda de la página.
@@ -15,7 +15,7 @@ Aquí hay una captura de pantalla que muestra los pasos anteriores:
 
 <img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/create-test-class-in-package.jpg.png">
 
-2. Edite el nuevo archivo resultante para que contenga el siguiente contenido:
+### 2. Edite el nuevo archivo resultante para que contenga el siguiente contenido:
 ```java
 package example.cashcard;
 
@@ -39,7 +39,7 @@ De la verdadera manera de **Test-First**, hemos escrito primero una prueba falli
 
 No te preocupes por que la prueba (assert that 1 isEqualsTo 42), así como el nombre del método de prueba, parezca extraño. Estamos a punto de cambiarlos.
 
-3. Ejecute la prueba desde la línea de comandos de su terminal (asegure de estar primero en el directorio de `exercices`):
+### 3. Ejecute la prueba desde la línea de comandos de su terminal (asegure de estar primero en el directorio de `exercices`):
 ```bash
 [~/exercises] $ ./gradlew test
 ```
@@ -68,12 +68,12 @@ expected: 42
 
 Podrías haber esperado esto, ya que el número 1 no es igual al número 42.
 
-4. Para "arreglar" la prueba, puedes crear una afirmación que sabes que es cierta:
+### 4. Para "arreglar" la prueba, puedes crear una afirmación que sabes que es cierta:
 ```java
 assertThat(42).isEqualTo(42);
 ```
 
-5. Ahora ejecuta la prueba de nuevo. ¡Pasa!
+### 5. Ahora ejecuta la prueba de nuevo. ¡Pasa!
 ```shell
 [~/exercises] $ ./gradlew test
 

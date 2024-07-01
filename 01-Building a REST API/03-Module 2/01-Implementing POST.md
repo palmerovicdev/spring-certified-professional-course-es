@@ -2,13 +2,13 @@ Nuestra **API REST** ahora puede obtener `CashCard` con una identificación espe
 
 Cuatro preguntas que tendremos que responder mientras hacemos esto son:
 
-1. ¿Quién especifica el **ID**: el cliente o el servidor?
+### 1. ¿Quién especifica el **ID**: el cliente o el servidor?
 
-2. En la solicitud de **API**, ¿cómo representamos el objeto que se va a crear?
+### 2. En la solicitud de **API**, ¿cómo representamos el objeto que se va a crear?
 
-3. ¿Qué método **HTTP** deberíamos usar en la solicitud?
+### 3. ¿Qué método **HTTP** deberíamos usar en la solicitud?
 
-4. ¿Qué envía la **API** como respuesta?
+### 4. ¿Qué envía la **API** como respuesta?
 
 Comencemos respondiendo a la primera pregunta: "¿Quién especifica la identificación?" En realidad, ¡esto depende del creador de la **API**! **REST** no es exactamente un estándar; es simplemente una forma de usar **HTTP** para realizar operaciones de datos. **REST** contiene una serie de directrices, muchas de las cuales estamos siguiendo en este curso.
 

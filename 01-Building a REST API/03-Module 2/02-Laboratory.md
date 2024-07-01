@@ -2,7 +2,7 @@
 
 Como hemos hecho en laboratorios anteriores, comenzaremos escribiendo una prueba de cómo esperamos que sea el éxito.
 
-1. Añade una prueba para el endpoint de **POST**.
+### 1. Añade una prueba para el endpoint de **POST**.
 
 El ejemplo más simple de éxito es una solicitud **HTTP POST** no fallida a nuestra **API** de **Family Cash Card**. Probaremos una respuesta de `200 OK` en lugar de un `201 CREATED` por ahora. No te preocupes, cambiaremos esto pronto.
 
@@ -17,7 +17,7 @@ Edite `src/test/java/example/cashcard/CashCardApplicationTests.java` y agregue e
     }
 ```
 
-2. Entender la prueba.
+### 2. Entender la prueba.
 ```java
 CashCard newCashCard = new CashCard(null, 250.00);
 ```
@@ -32,7 +32,7 @@ Esto es muy similar a `restTemplate.getForEntity`, pero también debemos proporc
 
 Además, y a diferencia de `restTemplate.getForEntity`, no esperamos que se nos devuelva una `CashCard`, por lo que esperamos un cuerpo de respuesta de `Void`.
 
-3. Corre las pruebas.
+### 3. Corre las pruebas.
 Siempre usaremos  `./gradlew test` para ejecutar nuestras pruebas.
 
 ```shell
@@ -60,7 +60,7 @@ El endpoint de **POST** debe aceptar los datos que estamos enviando para nuestra
 
 Pero, ¿qué pasa si no aceptamos la `CashCard`?
 
-1. Añade el endpoint **POST** sin aceptar datos de `CashCard`.
+### 1. Añade el endpoint **POST** sin aceptar datos de `CashCard`.
 
 Edite `src/main/java/example/cashcard/CashCardController.java` y agregue el siguiente método.
 
@@ -78,7 +78,7 @@ private ResponseEntity<Void> createCashCard() {
 
 Tenga en cuenta que al no devolver nada en absoluto, **Spring Web** generará automáticamente un código de estado de respuesta **HTTP** de `200 OK`.
 
-2. Ejecuta las pruebas.
+### 2. Ejecuta las pruebas.
 
 Cuando repetimos las pruebas, pasan.
 
@@ -102,7 +102,7 @@ Para nuestro endpoint de **POST**, revise esta sección sobre [HTTP POST](https:
 
 Explicaremos más sobre esta especificación mientras escribimos nuestra prueba.
 
-1. Comenzemos actualizando la prueba **POST**.
+### 1. Comenzemos actualizando la prueba **POST**.
 
 Actualice la prueba `shouldCreateANewCashCard`.
 
@@ -124,7 +124,7 @@ Así es como codificaremos la especificación **HTTP** como expectativas en nues
     }
 ```
 
-2. Comprende las actualizaciones de la prueba.
+### 2. Comprende las actualizaciones de la prueba.
 
 Hemos hecho bastantes cambios. Vamos a revisar.
 
@@ -156,7 +156,7 @@ assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 ```
 Por último, utilizaremos la información del encabezado de la ubicación para buscar la `CashCard` recién creada.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 No es de esperar que fallen en la primera **assertion** cambiada.
 
@@ -171,7 +171,7 @@ No es de esperar que fallen en la primera **assertion** cambiada.
 
 Nuestro endpoint **POST** en `CashCardController` está actualmente vacío. Implementemos la lógica correcta.
 
-1. Devuelve un estado `201 CREATED`.
+### 1. Devuelve un estado `201 CREATED`.
 
 A medida que aprobamos gradualmente nuestra prueba, podemos comenzar devolviendo `201 CREATED`.
 
@@ -190,7 +190,7 @@ Asegúrese de añadir las dos nuevas declaraciones de importación.
      }
 ```
 
-2. Corra las pruebas.
+### 2. Corra las pruebas.
 ```shell
 expected: 200 OK
  but was: 404 NOT_FOUND
@@ -205,7 +205,7 @@ assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 
 Aquí esperamos haber recuperado nuestra `CashCard` recién creada, que no hemos creado o devuelto de nuestro `CashCardController`. Por lo tanto, nuestra expectativa falla con un resultado de `NOT_FOUND`.
 
-3. Guarda la nueva `CashCard` y devuelve su ubicación.
+### 3. Guarda la nueva `CashCard` y devuelve su ubicación.
 
 Añadamos el resto de la implementación de **POST**, que describiremos en detalle.
 
@@ -270,7 +270,7 @@ Por último, devolvemos `201 CREATED` con el encabezado de `Location` correcto.
 
 # Final Testing and Learning Moment
 
-1. Ejecuta las pruebas.
+### 1. Ejecuta las pruebas.
 
 ¡Ellas pasan!
 
@@ -280,7 +280,7 @@ BUILD SUCCESSFUL in 7s
 
 Se creó la nueva `CashCard`, y utilizamos el **URI** proporcionado en el encabezado de respuesta de `Location` para recuperar el recurso recién creado.
 
-2. Añade más **assertions** de prueba.
+### 2. Añade más **assertions** de prueba.
 
 Si lo desea, agregue más **assertions** de prueba para la nueva identificación y cantidad para solidificar su aprendizaje.
 
@@ -299,7 +299,7 @@ assertThat(amount).isEqualTo(250.00);
 
 Las adiciones verifican que el nuevo `CashCard.id` no es nulo, y que la cantidad de `CashCard`. recién creada es de `250,00`, tal y como especificamos en el momento de la creación.
 
-### Learning Moment
+#### Learning Moment
 
 Anteriormente dijemos que la base de datos (a través del **Repository**) gestionaría la creación de todos los valores de identificación de la base de datos para nosotros.
 
@@ -307,7 +307,7 @@ Anteriormente dijemos que la base de datos (a través del **Repository**) gestio
 
 Vamos a averiguarlo.
 
-1. Actualice la prueba para enviar un `CashCard.id`
+### 1. Actualice la prueba para enviar un `CashCard.id`
 
 Cambie la identificación enviada de nula a una que no exista, como `44L`.
 
@@ -330,7 +330,7 @@ Además, edite `build.gradle` para permitir una salida de prueba más detallada,
     }
 ```
 
-2. Ejecuta las pruebas.
+### 2. Ejecuta las pruebas.
 
 Cuando ejecutamos la prueba, vemos que la **API** se bloquea con un código de estado de `500`.
 
@@ -343,7 +343,7 @@ expected: 201 CREATED
 
 Averigüemos por qué la prueba está fallando.
 
-3. Encuentre y comprenda el fallo de la base de datos.
+### 3. Encuentre y comprenda el fallo de la base de datos.
 
 Busca el siguiente mensaje en la salida de la prueba:
 

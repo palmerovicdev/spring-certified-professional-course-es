@@ -2,7 +2,7 @@
 
 Como si estuviéramos en un proyecto real, usemos el desarrollo impulsado por pruebas para implementar nuestro primer endpoint de la **API**.
 
-1. Escribe la prueba.
+### 1. Escribe la prueba.
 
 Comencemos implementando una prueba usando el `@SpringBootTest` de **Spring**.
 
@@ -36,7 +36,7 @@ Actualice `src/test/java/example/cashcard/CashCardApplicationTests.java` con lo 
     }
 ```
 
-2. Entender la prueba.
+### 2. Entender la prueba.
 
 Vamos a entender varios elementos importantes en esta prueba.
 
@@ -69,7 +69,7 @@ assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
 Podemos inspeccionar muchos aspectos de la respuesta, incluido el código de estado de la respuesta **HTTP**, que esperamos que esté `200 OK`.
 
-3. Ahora ejecuta la prueba.
+### 3. Ahora ejecuta la prueba.
 
 ¿Qué crees que pasará cuando hagamos la prueba?
 
@@ -92,7 +92,7 @@ CashCardApplicationTests > shouldReturnACashCardWhenDataIsSaved() FAILED
 
 Pero, ¿por qué estamos teniendo este fracaso específico?
 
-4. Comprender el fallo de la prueba.
+### 4. Comprender el fallo de la prueba.
 
 Como explicamos, esperábamos que nuestra prueba fallara actualmente.
 
@@ -108,7 +108,7 @@ A continuación, hagamos que nuestra aplicación funcione correctamente.
 
 Los controladores web de **Spring** están diseñados para manejar y responder a las solicitudes **HTTP**.
 
-1. Crea el controlador.
+### 1. Crea el controlador.
 
 Crea la clase **Controller** en `src/main/java/example/cashcard/CashCardController.java`.
 
@@ -125,7 +125,7 @@ class CashCardController {
 }
 ```
 
-2. Añade el método del controlador.
+### 2. Añade el método del controlador.
 
 Implemente un método `findById()` para manejar las solicitudes **HTTP** entrantes.
 
@@ -137,7 +137,7 @@ class CashCardController {
 }
 ```
 
-3. Ahora vuelve a ejecutar la prueba.
+### 3. Ahora vuelve a ejecutar la prueba.
 
 ¿Qué esperamos que suceda cuando volvemos a realizar las pruebas?
 
@@ -152,7 +152,7 @@ A pesar del nombre, `CashCardController` no es realmente un **Spring Web Control
 
 # Add the GET endpoint
 
-1. Actualice el controlador.
+### 1. Actualice el controlador.
 
 Actualicemos nuestro `CashCardController` para que esté configurado para escuchar y manejar las solicitudes **HTTP** a `/cashcards`.
 
@@ -168,7 +168,7 @@ Actualicemos nuestro `CashCardController` para que esté configurado para escuch
     }
 ```
 
-2. Comprende las anotaciones de **Spring Web**.
+### 2. Comprende las anotaciones de **Spring Web**.
 
 Revisemos nuestras adiciones.
 
@@ -191,7 +191,7 @@ Private ResponseEntity<String> findById() {...}
 
 `@GetMapping` marca un método como método de controlador. Las solicitudes **GET** que coincidan con `cashcard/{requestedID}` se manejarán con este método.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 ¡Ellas pasan!
 
@@ -209,7 +209,7 @@ Finalmente tenemos un **Controller** y un endpoint que coincide con la solicitud
 
 A partir de ahora, nuestra prueba solo afirma que la solicitud tuvo éxito comprobando un estado de respuesta de `200 OK`. A continuación, vamos a probar que la respuesta contiene los valores correctos.
 
-1. Actualiza la prueba.
+### 1. Actualiza la prueba.
 
 ```java
 assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -219,7 +219,7 @@ Number id = documentContext.read("$.id");
 assertThat(id).isNotNull();
 ```
 
-2. Comprende las adiciones.
+### 2. Comprende las adiciones.
 
 ```java
 DocumentContext documentContext = JsonPath.parse(response.getBody());
@@ -234,7 +234,7 @@ assertThat(id).isNotNull();
 
 Esperamos que cuando solicitemos una `CashCard` con una identificación de `99`, se devuelva un objeto **JSON** con algo en el campo de identificación. Por ahora, afirma que la identificación no es nula.
 
-3. Ejecute la prueba y vea el fallo.
+### 3. Ejecute la prueba y vea el fallo.
 
 Dado que devolvemos un objeto **JSON** vacío `{}`, no deberíamos sorprendernos de que el campo id esté vacío.
 
@@ -243,7 +243,7 @@ Dado que devolvemos un objeto **JSON** vacío `{}`, no deberíamos sorprendernos
         com.jayway.jsonpath.PathNotFoundException: No results for path: $['id']
     ```
 
-4. Devuelve una `CashCard` del controlador.
+### 4. Devuelve una `CashCard` del controlador.
 
 Hagamos la prueba, pero devolvamos algo intencionalmente incorrecto, como `1000L`. Verás por qué más tarde.
 
@@ -257,13 +257,13 @@ Además, utilicemos la clase de modelo de datos de `CashCard` que creamos en una
     }
 ```
 
-5. Ejecuta la prueba.
+### 5. Ejecuta la prueba.
 
 ¡Pasa! Sin embargo, ¿se siente correcto? En realidad no. Hacer que la prueba pase con datos incorrectos parece incorrecto.
 
 Le pedimos que devolviera intencionalmente una identificación incorrecta de `1000L` para ilustrar un punto: es importante que las pruebas pasen o no por la razón correcta.
 
-6. Actualiza la prueba.
+### 6. Actualiza la prueba.
 
 Actualice la prueba para afirmar que la identificación es correcta.
 
@@ -273,7 +273,7 @@ Actualice la prueba para afirmar que la identificación es correcta.
     assertThat(id).isEqualTo(99);
 ```
 
-7. Vuelva a ejecutar las pruebas y note el nuevo mensaje de fallo.
+### 7. Vuelva a ejecutar las pruebas y note el nuevo mensaje de fallo.
 
 ```shell
 expected: 99
@@ -282,7 +282,7 @@ expected: 99
 
 Ahora, la prueba está fallando por la razón correcta: no devolvimos la identificación correcta.
 
-8. Arreglar `CashCardController`.
+### 8. Arreglar `CashCardController`.
 
 Actualice `CashCardController` para devolver la identificación correcta.
 
@@ -294,11 +294,11 @@ Actualice `CashCardController` para devolver la identificación correcta.
     }
 ```
 
-9. Ejecuta la prueba.
+### 9. Ejecuta la prueba.
 
 ¡Woo hoo, pasa!
 
-10. Prueba la cantidad.
+### 10. Prueba la cantidad.
 
 A continuación, agreguemos una afirmación para la cantidad indicada por el contrato **JSON**.
 
@@ -311,7 +311,7 @@ A continuación, agreguemos una afirmación para la cantidad indicada por el con
     assertThat(amount).isEqualTo(123.45);
 ```
 
-11. Ejecuta las pruebas y observa el fallo.
+### 11. Ejecuta las pruebas y observa el fallo.
 
 Por supuesto, no devolvemos la cantidad correcta en la respuesta.
 
@@ -320,7 +320,7 @@ Por supuesto, no devolvemos la cantidad correcta en la respuesta.
     but was: 0.0
 ```
 
-12. Devuelve la cantidad correcta.
+### 12. Devuelve la cantidad correcta.
 
 Actualicemos el `CashCardController` para devolver la cantidad indicada por el contrato **JSON**.
 
@@ -332,7 +332,7 @@ Actualicemos el `CashCardController` para devolver la cantidad indicada por el c
     }
 ```
 
-13. Vuelve a ejecutar las pruebas.
+### 13. Vuelve a ejecutar las pruebas.
 
 ¡Ellas pasan! Excelente.
 
@@ -344,7 +344,7 @@ BUILD SUCCESSFUL in 6s
 
 Hasta ahora, hemos ignorado el **ID** solicitado en el método de controlador del controlador. Usemos esta variable de ruta en nuestro controlador para asegurarnos de devolver la `CashCard` correcta.
 
-1. Añade un nuevo método de prueba.
+### 1. Añade un nuevo método de prueba.
 
 Escribamos una nueva prueba que espera ignorar las `CashCard` que no tienen una identificación de `99`. Usa `1000`, como lo hemos hecho en pruebas anteriores.
 
@@ -360,14 +360,14 @@ void shouldNotReturnACashCardWithAnUnknownId() {
 
 Tenga en cuenta que estamos esperando un código de estado de respuesta **HTTP** semántica de `404 NOT_FOUND`. Si solicitamos una `CashCard` que no existe, entonces esa `CashCard` de hecho "no se encuentra".
 
-2. Ejecute la prueba y anote el resultado.
+### 2. Ejecute la prueba y anote el resultado.
 
 ```shell
     expected: 404 NOT_FOUND
     but was: 200 OK
 ```
 
-3. Añade `@PathVariable`.
+### 3. Añade `@PathVariable`.
 
 Hagamos que la prueba pase haciendo que el **Controller** devuelva la `CashCard` específica solo si enviamos el identificador correcto.
 
@@ -383,7 +383,7 @@ private ResponseEntity<CashCard> findById(@PathVariable Long requestedId) {
 
 `@PathVariable` hace que **Spring Web** sea consciente de la identificación solicitada proporcionada en la solicitud **HTTP**. Ahora está disponible para que lo usemos en nuestro método de manejo.
 
-4. Utilice `@PathVariable`.
+### 4. Utilice `@PathVariable`.
 
 Actualice el método del controlador para devolver una respuesta vacía con el estado `NOT_FOUND` a menos que el **ID** solicitado sea `99`.
 
@@ -399,7 +399,7 @@ Actualice el método del controlador para devolver una respuesta vacía con el e
     }
 ```
 
-5. Vuelve a ejecutar las pruebas.
+### 5. Vuelve a ejecutar las pruebas.
 
 ¡Increíble! ¡Ellas pasan!
 

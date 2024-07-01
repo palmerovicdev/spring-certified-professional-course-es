@@ -166,7 +166,7 @@ Como hemos hecho en talleres anteriores, comenzaremos escribiendo una prueba de 
 
 Ya que estamos introduciendo un nuevo contrato de datos, ¡Empenzaremos por probarlo!
 
-1. Mira los nuevos accesorios de datos.
+### 1. Mira los nuevos accesorios de datos.
 
 Mira el archivo `src/test/resources/example/cashcard/list.json`. Contiene la siguiente matriz **JSON**:
 
@@ -191,7 +191,7 @@ cashCards = Arrays.array(
 
 Si miras de cerca, verás que uno de los objetos de `CashCard` en nuestra prueba no coincide con los datos de la prueba en `data.sql`. ¡Esto es para prepararnos para escribir una prueba fallida!
 
-2. Añade una prueba de serialización para la lista de `CashCard`.
+### 2. Añade una prueba de serialización para la lista de `CashCard`.
 
 Añade una nueva prueba a `CashCardJsonTest.java`:
 
@@ -204,7 +204,7 @@ void cashCardListSerializationTest() throws IOException {
 
 El código de prueba se explica por sí mismo: serializa la variable `cashCards` en **JSON**, luego afirma que `list.json` debe contener los mismos datos que la variable serializada `cashCards`.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 ¿Puedes predecir si la prueba fallará y, si lo hace, cuál será la causa del fallo? ¡Adelante, haz la llamada! ¿Qué crees que pasará?
 
@@ -224,7 +224,7 @@ Expected: 1.0
 
 ¡Tu predicción fue correcta (con suerte)! La prueba falló. Afortunadamente, el mensaje de error señala el lugar exacto donde se produce el fallo: el campo de cantidad de la segunda `CashCard` en la matriz (índice [1]) no es lo que se esperaba.
 
-4. Arreglar y volver a ejecutar las pruebas.
+### 4. Arreglar y volver a ejecutar las pruebas.
 
 Cambie `cashCards[1].amount` para esperar la cantidad correcta en la `CashCard`.
 
@@ -244,7 +244,7 @@ Después de corregir el código de prueba para esperar `1.0` en lugar de `100.0`
     BUILD SUCCESSFUL in 7s
 ```
 
-5. Añade una prueba de deserialización.
+### 5. Añade una prueba de deserialización.
 
 Ahora vamos a probar la deserialización. Añade la siguiente prueba:
 
@@ -264,7 +264,7 @@ void cashCardListDeserializationTest() throws IOException {
 
 Una vez más, hemos afirmado intencionalmente un valor incorrecto para que sea obvio lo que la prueba está probando.
 
-6. Ejecuta las pruebas.
+### 6. Ejecuta las pruebas.
 
 Cuando ejecutes las pruebas, verás que se ha capturado el valor incorrecto.
 
@@ -309,7 +309,7 @@ Ahora que hemos probado el contrato de datos, pasemos al endpoint del controlado
 
 # Test for an Additional GET Endpoint
 
-1. Escriba una prueba fallida para un nuevo endpoint **GET**.
+### 1. Escriba una prueba fallida para un nuevo endpoint **GET**.
 
 Agreguemos un nuevo método de prueba que espera un endpoint **GET** que devuelva varios objetos de `CashCard`.
 
@@ -325,7 +325,7 @@ En `CashCardApplicationTests.java`, añade una nueva prueba:
 
 Aquí estamos haciendo una solicitud al endpoint `/cashcards`. Dado que estamos recibiendo la lista completa de tarjetas, no necesitamos especificar ninguna información adicional en la solicitud.
 
-2. Ejecuta las pruebas y observa el fallo.
+### 2. Ejecuta las pruebas y observa el fallo.
 
 La prueba debería fallar porque no hemos implementado un endpoint del controlador para manejar esta solicitud **GET**.
 
@@ -352,7 +352,7 @@ Este es el proceso de **Spring**:
 
 - Por lo tanto, **Spring** informa de un error de `405 METHOD_NOT_ALLOWED` en lugar de `404 NOT FOUND` - la ruta se encontró de hecho, pero no es compatible con el verbo **GET**.
 
-3. Implemente el endpoint **GET** en el controlador.
+### 3. Implemente el endpoint **GET** en el controlador.
 
 Para superar el error `405`, necesitamos implementar el endpoint `/cashcards` en el controlador usando una anotación `@GetMapping`:
 
@@ -363,11 +363,11 @@ Para superar el error `405`, necesitamos implementar el endpoint `/cashcards` en
     }
 ```
 
-4. Comprende el método del controlador.
+### 4. Comprende el método del controlador.
 
 Una vez más, estamos utilizando una de las implementaciones integradas de **Spring Data**: `CrudRepository.findAll()`. Nuestro repositorio de implementación, `CashCardRepository`, devolverá automáticamente todos los registros de `CashCard` de la base de datos cuando se invoque `findAll()`.
 
-5. Vuelve a ejecutar las pruebas.
+### 5. Vuelve a ejecutar las pruebas.
 
 Cuando volvemos a ejecutar las pruebas, vemos que todas pasan, incluida la prueba para el endpoint **GET** para una lista de `CashCard`.
 
@@ -383,7 +383,7 @@ Como hemos hecho en lecciones anteriores, hemos probado que nuestro controlador 
 
 Mejoremos nuestras pruebas y asegurémonos de que se devuelvan los datos correctos de nuestra solicitud **HTTP**.
 
-1. Mejora la prueba.
+### 1. Mejora la prueba.
 
 En primer lugar, completemos la prueba para afirmar los valores de datos esperados:
 
@@ -405,7 +405,7 @@ En primer lugar, completemos la prueba para afirmar los valores de datos esperad
      }
 ```
 
-2. Entender la prueba.
+### 2. Entender la prueba.
 
 ```java
 documentContext.read("$.length()");
@@ -429,7 +429,7 @@ assertThat(...).containsExactlyInAnyOrder(...)
 
 No hemos garantizado el orden de la lista de `CashCard`: salen en cualquier orden que la base de datos elija para devolverlas. Dado que no especificamos el orden, `containsExactlyInAnyOrder(...)` afirma que, si bien la lista debe contener todo lo que afirmamos, el orden no importa.
 
-3. Ejecuta las pruebas.
+### 3. Ejecuta las pruebas.
 
 ¿Cuál crees que será el resultado de la prueba?
 
@@ -446,7 +446,7 @@ No hemos garantizado el orden de la lista de `CashCard`: salen en cualquier orde
 
 El mensaje de fallo señala exactamente la causa del fallo. Hemos escrito a hurtadillas una prueba que espera que la segunda `CashCard` tenga una cantidad de `100,00 $`, mientras que en `src/test/resources/data.sql` el valor real es de `1,00 $`.
 
-4. Corrija las pruebas y vuelva a ejecutarlas.
+### 4. Corrija las pruebas y vuelva a ejecutarlas.
 
 Cambie la expectativa de la `CashCard` de `1 $`:
 
@@ -496,7 +496,7 @@ Ejecuta todas las pruebas:
 
 La razón es que una de las otras pruebas está interfiriendo con nuestra nueva prueba al crear una nueva `CashCard`. `@DirtiesContext` soluciona este problema haciendo que **Spring** comience con un borrón y cuenta nueva, como si esas otras pruebas no se hubieran ejecutado. Eliminarlo (comentándolo) de la clase hizo que nuestra nueva prueba fallara.
 
-## Learning Moment
+#### Learning Moment
 
 Aunque puedes usar `@DirtiesContext` para evitar la interacción entre pruebas, no deberías usarlo indiscriminadamente; deberías tener una buena razón. Nuestra razón aquí es limpiar después de crear una nueva `CashCard`.
 
@@ -521,7 +521,7 @@ class CashCardApplicationTests {
 
 Tenemos 3 `CashCard` en nuestra base de datos. Hagamos una prueba para buscarlos de uno en uno (tamaño de página de 1), y luego ordenar sus cantidades de más alta a menor (descendente).
 
-1. Escribe la prueba de paginación.
+### 1. Escribe la prueba de paginación.
 
 Agregue la siguiente prueba a `CashCardApplicationTests`, y tenga en cuenta que estamos agregando parámetros a la solicitud **HTTP** de `?page=0&size=1`. Nos encargaremos de esto en nuestro **Controller** más tarde.
 
@@ -537,7 +537,7 @@ Agregue la siguiente prueba a `CashCardApplicationTests`, y tenga en cuenta que 
     }
 ```
 
-2. Ejecuta las pruebas.
+### 2. Ejecuta las pruebas.
 
 Cuando ejecutamos las pruebas, no deberíamos sorprendernos de que se devuelvan todas las `CashCard`.
 
@@ -546,7 +546,7 @@ Cuando ejecutamos las pruebas, no deberíamos sorprendernos de que se devuelvan 
     but was: 3
 ```
 
-3. Implementar la paginación en el `CashCardController`.
+### 3. Implementar la paginación en el `CashCardController`.
 
 ¡Así que vamos a añadir nuestro nuevo endpoint al controlador! Agregue el siguiente método al `CashCardController` (no elimine el método `findAll()` existente):
 
@@ -562,7 +562,7 @@ Cuando ejecutamos las pruebas, no deberíamos sorprendernos de que se devuelvan 
     }
 ```
 
-4. Comprende el código de paginación.
+### 4. Comprende el código de paginación.
 
 ```java
 findAll(Pageable pageable)
@@ -581,7 +581,7 @@ findAll(Pageable pageable)
 
 ¿Nuestra `CashCardRepository` ya es compatible con la paginación y la clasificación? Vamos a averiguarlo.
 
-5. Intenta compilar.
+### 5. Intenta compilar.
 
 ¡Cuando ejecutamos las pruebas descubrimos que nuestro código ni siquiera se compila!
 
@@ -598,7 +598,7 @@ exercises/src/main/java/example/cashcard/CashCardController.java:50: error: meth
 
 ¡Pero por supuesto! No hemos cambiado el repositorio para ampliar la interfaz adicional. Así que hazlo. En `CashCardRepository.java`, extienda también `PagingAndSortingRepository`:
 
-6. Extienda `PagingAndSortingRepository` y vuelva a ejecutar las pruebas.
+### 6. Extienda `PagingAndSortingRepository` y vuelva a ejecutar las pruebas.
 
 Actualice `CashCardRepository` para ampliar también `PagingAndSortingRepository`.
 
@@ -629,7 +629,7 @@ example.cashcard.CashCardController#findAll() mapped.
 
 (El output real es inmensamente larga. Hemos incluido el mensaje de error más útil en la salida anterior.)
 
-7. Comprender y resolver el fallo.
+### 7. Comprender y resolver el fallo.
 
 Entonces, ¿qué pasó?
 
@@ -649,7 +649,7 @@ private ResponseEntity<Iterable<CashCard>> findAll() {
 }
 ```
 
-8. Ejecute las pruebas y asegúrese de que pasen.
+### 8. Ejecute las pruebas y asegúrese de que pasen.
 
 ```shell
     BUILD SUCCESSFUL in 7s
@@ -660,7 +660,7 @@ A continuación, implementemos el **Sorting**.
 
 Nos gustaría que las `CashCard` volvieran en un orden que tenga sentido para los humanos. Así que ordenémoslos por cantidad en un orden descendente con las cantidades más altas primero.
 
-1. Escribe una prueba (que esperamos que falle).
+### 1. Escribe una prueba (que esperamos que falle).
 
 Añade la siguiente prueba a `CashCardApplicationTests`:
 
@@ -679,7 +679,7 @@ Añade la siguiente prueba a `CashCardApplicationTests`:
     }
 ```
 
-2. Entender la prueba.
+### 2. Entender la prueba.
 
 El **URI** que estamos solicitando contiene información tanto de `pagination` como de `sorting`: `/cashcards?page=0&size=1&sort=amount,desc`
 
@@ -693,7 +693,7 @@ La extracción de datos (¡usando más `JSONPath`!) Y las afirmaciones que lo ac
 
 ¿Crees que la prueba pasará? Antes de ejecutarlo, trata de averiguar si lo hará o no. Si crees que no pasará, ¿dónde crees que estará el fracaso?
 
-3. Ejecuta la prueba.
+### 3. Ejecuta la prueba.
 
 ```shell
 [~/exercises] $ ./gradlew test
@@ -709,7 +709,7 @@ La razón es que, dado que no especificamos un orden de clasificación, las tarj
 
 Una observación importante: no todas las bases de datos actuarán de la misma manera. Ahora, debería tener aún más sentido por qué especificamos un orden de `sorting` (en lugar de confiar en el orden predeterminado de la base de datos).
 
-4. Implementar `sorting` en el controlador.
+### 4. Implementar `sorting` en el controlador.
 
 Añadir `sorting` al código del controlador es una adición súper simple de una sola línea. En la clase `CashCardController`, agregue un parámetro adicional a la llamada `PageRequest.of()`:
 
@@ -729,7 +729,7 @@ Ejecuta las pruebas de nuevo. ¡Ellas pasan!
     CashCardApplicationTests > shouldReturnAllCashCardsWhenListIsRequested() PASSED
 ```
 
-5. Aprende rompiendo cosas.
+### 5. Aprende rompiendo cosas.
 
 Para tener un poco más de confianza en la prueba, hagamos un experimento.
 
@@ -756,7 +756,7 @@ Ahora volvamos a cambiar la prueba para solicitar el orden de clasificación des
 
 Ahora tenemos un endpoint que requiere que el cliente envíe cuatro piezas de información: el índice y el tamaño de la página, el orden de clasificación y la dirección. Esto es mucho pedir, así que hagámoslo más fácil para ellos.
 
-1. Escribe una nueva prueba que no envíe ningún parámetro de paginación o clasificación.
+### 1. Escribe una nueva prueba que no envíe ningún parámetro de paginación o clasificación.
 
 Añadiremos una nueva prueba que espera valores predeterminados razonables para los parámetros.
 
@@ -781,7 +781,7 @@ Los valores predeterminados serán:
     }
 ```
 
-2. Ejecuta las pruebas.
+### 2. Ejecuta las pruebas.
 
 ```shell
 [~/exercises] $ ./gradlew test
@@ -798,7 +798,7 @@ El fallo de la prueba muestra:
 
 - PERO: No están ordenados ya que la afirmación `(amounts).containsExactly(1.00, 123.45, 150.00)` falla:
 
-3. Haga que la prueba pase.
+### 3. Haga que la prueba pase.
 
 Cambie la implementación añadiendo una sola línea al método del `Controller`:
 
@@ -812,7 +812,7 @@ Cambie la implementación añadiendo una sola línea al método del `Controller`
     ...
 ```
 
-4. Comprender la implementación.
+### 4. Comprender la implementación.
 
 Entonces, ¿qué acaba de pasar?
 
@@ -828,7 +828,7 @@ La respuesta es que el método `getSortOr()` proporciona valores predeterminados
 
 El resultado neto es que si alguno de los tres parámetros requeridos no se pasa a la aplicación, se proporcionarán valores predeterminados razonables.
 
-5. Ejecuta las pruebas... ¡otra vez!
+### 5. Ejecuta las pruebas... ¡otra vez!
 
 ¡Enhorabuena!
 
