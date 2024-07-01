@@ -383,5 +383,6 @@ BUILD SUCCESSFUL in 6s
 # Summary
 
 En esta práctica de laboratorio, implementó un endpoint `RESTful` `DELETE` que no "filtra" información de seguridad a posibles atacantes. También 
-tuvo la oportunidad de hacer una refactorización pequeña pero útil para practicar el proceso de Red, Green, Refactor.
-Esta es la última de las operaciones CRUD que se implementará en la API, lo que nos lleva a una conclusión exitosa de nuestro trabajo técnico. ¡Felicidades!
+tuvo la oportunidad de hacer una refactorización pequeña pero útil para practicar el proceso de **Red, Green, Refactor**.
+
+Esta es la última de las operaciones `CRUD` que se implementará en la `API`, lo que nos lleva a una conclusión exitosa de nuestro trabajo técnico. ¡Felicidades!
