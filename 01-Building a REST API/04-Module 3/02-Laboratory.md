@@ -348,7 +348,7 @@ Reconociendo que las opiniones pueden diferir, tomaremos la decisión de dejar a
 
 # Refactor the Controller Code
 
-Reforcemos su uso del ciclo de desarrollo **Rojo, Verde y Refactor**.
+Reforcemos su uso del ciclo de desarrollo **Red, Green and Refactor**.
 
 Acabamos de completar varias pruebas enfocadas en actualizar una `CashCard` existente.
 
