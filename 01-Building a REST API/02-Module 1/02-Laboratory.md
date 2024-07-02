@@ -10,23 +10,23 @@ Complete los siguientes pasos para usar **Spring Initializr** para configurar la
 
 
 ### 2. Seleccione las siguientes opciones:
-	- **Proyecto**: Gradle
-	- **Idioma**: Java
-	- **SpringBoot**: Elige el último 3.3. Versión X
+	- Proyecto: Gradle
+	- Idioma: Java
+	- SpringBoot: Elige el último 3.3. Versión X
 
 ### 3. Introduzca los siguientes valores junto a los campos de metadatos del proyecto correspondientes:
-	- **Grupo**: ejemplo
-	- **Artefacto**: `CashCard`
-	- **Nombre**: CashCard
-	- **Descripción**: Servicio de CashCard para `CashCard` familiares
-	- **Embalaje**: Jar
-	- **Java**: 17
+	- Grupo: ejemplo
+	- Artefacto: CashCard
+	- Nombre: CashCard
+	- Descripción: Servicio de CashCard para familiares
+	- Ensamblaje: Jar
+	- Java: 17
 
    > Nota: No tienes que introducir el campo **"Package name"** - ¡**Spring Initializr** rellenará esto por ti!
 
 ### 4. Seleccione el botón **ADD DEPENDENCIES**... en el panel **DEPENDENCIES**.
 ### 5. Seleccione la siguiente opción, ya que sabemos que vamos a crear una aplicación web:
-	- **Opciones web**: Spring Web
+	- Opciones web: Spring Web
 
    > Más adelante en el curso, agregarás dependencias adicionales sin usar Spring Initializr.
 
@@ -36,13 +36,12 @@ Complete los siguientes pasos para usar **Spring Initializr** para configurar la
 ### 8. Desde la línea de comandos en la pestaña **Terminal**, introduzca los siguientes comandos para usar la envoltura de gradle para crear y probar la aplicación generada.
 Vaya al directorio de `cashcard` en la pestaña del panel de control del `Terminal`.
 
-`Dashboard: Open dashboard "Terminal"`
 ```bash
 [~] $ cd cashcard 
 [~/cashcard] $
 ```
 
-A continuación, ejecute el comando de compilación `./gradlew`:
+A continuación, ejecute el comando de compilación `./gradlew build`:
 ```bash
 [~/cashcard] $ ./gradlew build
 ```
