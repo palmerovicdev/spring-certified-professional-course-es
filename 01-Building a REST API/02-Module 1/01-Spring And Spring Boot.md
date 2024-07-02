@@ -16,19 +16,25 @@ Boot** es una versión más funcional y simplificada de **Spring** que viene con
 
 ## Spring's Inversion of Control Container
 
-**Spring Boot** aprovecha el contenedor de **inversión de control (IoC)** de **Spring Core**. Utilizarás esta función de **Spring** ampliamente mientras creas la aplicación **Family Cash Card**. Hay una amplia documentación para este concepto, pero aquí lo mantendremos simple.
+**Spring Boot** aprovecha el **contenedor de inversión de control (IoC)** de **Spring Core**. Utilizarás esta función de **Spring** ampliamente 
+mientras creas la aplicación **Family Cash Card**. Hay una amplia documentación para este concepto, pero aquí lo mantendremos simple.
 
-**Spring Boot** le permite configurar cómo y cuándo se proporcionan las dependencias a su aplicación en tiempo de ejecución. Esto le da el control de cómo funciona su aplicación en diferentes escenarios.
+**Spring Boot** le permite configurar cómo y cuándo se proporcionan las dependencias a su aplicación en tiempo de ejecución. Esto le da el control 
+de cómo funciona la misma en diferentes escenarios.
 
-Por ejemplo, es posible que desee utilizar una base de datos diferente para el desarrollo local que para su aplicación en vivo y orientada al público. A su código de aplicación no le debería importar esta distinción; si lo hiciera, tendría que codificar todos los escenarios posibles en la lógica de su aplicación. En su lugar, **Spring Boot** le permite proporcionar una configuración externa que especifica cómo y cuándo se utilizan dichas dependencias.
+Por ejemplo, es posible que desee utilizar una base de datos diferente para el desarrollo local que para su aplicación en vivo y orientada al público. A su código no le debería importar esta distinción; si lo hiciera, tendría que codificar todos los escenarios posibles en la lógica. En su lugar, **Spring Boot** le permite proporcionar una configuración externa que especifica cómo y cuándo se utilizan dichas dependencias.
 
-La **inversión del control** a menudo se llama **inyección de dependencia (DI)**, aunque esto no es estrictamente correcto. La inyección de dependencias y los frameworks que las acompañan son una forma de lograr la inversión de control, y los desarrolladores de **Spring** a menudo afirmarán que las dependencias se "inyectan" en sus aplicaciones en tiempo de ejecución. Estamos dejando clara esta distinción porque muchos lenguajes y frameworks de software implementan **IoC**, pero no necesariamente lo llaman "inyección de dependencia". Sin embargo, dentro de la comunidad de **Spring**, a menudo escucharás los términos utilizados indistintamente.
+La **inversión del control** a menudo se llama **inyección de dependencia (DI)**, aunque esto no es estrictamente correcto. La inyección de 
+dependencias y los frameworks que las implementan son una forma de lograr la **inversión de control**, y los desarrolladores de **Spring** a menudo 
+afirmarán 
+que las dependencias se "inyectan" en sus aplicaciones en tiempo de ejecución. Estamos dejando clara esta distinción porque muchos lenguajes y frameworks de software implementan **IoC**, pero no necesariamente lo llaman "inyección de dependencia". Sin embargo, dentro de la comunidad de **Spring**, a menudo escucharás los términos utilizados indistintamente.
 
 Obtenga más información sobre el contenedor **IoC** de **Spring** en la [documentación oficial de Spring](https://docs.spring.io/spring-framework/reference/core/beans.html).
 
 ## Spring Initializr
 
-Al iniciar una nueva aplicación **Spring Boot**, **Spring Initializr** es el primer paso recomendado. Puedes pensar en **Spring Initializr** como un carrito de compras para todas las dependencias que tu aplicación pueda necesitar. Generará rápida y fácilmente una aplicación de **Spring Boot** completa y lista para ejecutar.
+Al iniciar una nueva aplicación de **Spring Boot**, **Spring Initializr** es el primer paso recomendado. Puedes pensar en **Spring Initializr** como 
+un carrito de compras para todas las dependencias que tu aplicación pueda necesitar. Generará rápida y fácilmente una aplicación de **Spring Boot** completa y lista para ejecutar.
 
 En el siguiente laboratorio, usaremos **Spring Initializr**. El flujo general para **Spring Initializr** es rellenar los metadatos, añadir dependencias relevantes y generar su nuevo proyecto. Para la aplicación **Family Cash Card**, proporcionaremos todas estas instrucciones.
 
