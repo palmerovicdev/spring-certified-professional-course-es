@@ -4,7 +4,8 @@
 
 **Spring** es un framework integral que proporciona varios módulos para construir diferentes tipos de aplicaciones. Es como tener una caja de herramientas gigante con todas las herramientas que puedas necesitar para construir lo que quieras. A medida que construyamos nuestra **API** de **Family Cash Card**, utilizaremos **Spring MVC** para la aplicación web, **Spring Data** para el acceso a los datos y **Spring Security** para la autenticación y autorización.
 
-Esta versatilidad tiene un coste. La configuración de una aplicación **Spring** requiere mucha configuración, y los desarrolladores necesitan configurar manualmente varios componentes del framework para poner en marcha una aplicación.
+Esta versatilidad tiene un coste. La realizacion de una aplicación **Spring** requiere mucha configuración, y los desarrolladores necesitan 
+hacer manualmente varios componentes del framework para ponerla en marcha.
 
 ### Spring Boot
 
