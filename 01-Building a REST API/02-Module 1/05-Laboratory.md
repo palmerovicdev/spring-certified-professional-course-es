@@ -33,11 +33,14 @@ class CashCardJsonTest {
 
 Tómese un momento para entender el código de prueba: la anotación **@Test** es parte de la biblioteca **JUnit**, y el método **assertThat** es parte de la biblioteca **AssertJ**. Ambas bibliotecas se importan después de la declaración del paquete.
 
-Una convención común (pero no un requisito) es usar siempre el sufijo de prueba para las clases de prueba. Lo hemos hecho aquí. El nombre completo de la clase **CashCardJsonTest** te da una pista sobre la naturaleza de la prueba que estamos a punto de escribir.
+Una convención común (pero no un requisito) es usar siempre el sufijo "test" para las clases de prueba. Lo hemos hecho aquí. El nombre completo de la 
+clase **CashCardJsonTest** te da una pista sobre la naturaleza de la prueba que estamos a punto de escribir.
 
-De la verdadera manera de **Test-First**, hemos escrito primero una prueba fallida. Es importante tener una prueba fallida primero para que pueda tener una gran confianza en que todo lo que hizo para arreglar la prueba realmente funcionó.
+De la verdadera manera de **Test-First**, hemos escrito primero una prueba fallida. Es importante tener una prueba fallida primero para que pueda 
+tener una gran confianza en que todo lo que hizo para arreglarla realmente funcionó.
 
-No te preocupes por que la prueba (assert that 1 isEqualsTo 42), así como el nombre del método de prueba, parezca extraño. Estamos a punto de cambiarlos.
+No te preocupes por que la prueba (`assertThat(1).isEqualsTo(42)`), así como el nombre del método de prueba, parezca extraño. Estamos a punto de 
+cambiarlos.
 
 ### 3. Ejecute la prueba desde la línea de comandos de su terminal (asegure de estar primero en el directorio de `exercices`):
 ```bash
