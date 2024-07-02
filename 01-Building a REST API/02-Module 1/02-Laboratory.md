@@ -10,7 +10,7 @@ Complete los siguientes pasos para usar **Spring Initializr** para configurar la
 
 
 ### 2. Seleccione las siguientes opciones:
-	- **Proyecto**: Maven
+	- **Proyecto**: Gradle
 	- **Idioma**: Java
 	- **SpringBoot**: Elige el último 3.3. Versión X
 
@@ -19,7 +19,7 @@ Complete los siguientes pasos para usar **Spring Initializr** para configurar la
 	- **Artefacto**: `CashCard`
 	- **Nombre**: CashCard
 	- **Descripción**: Servicio de CashCard para `CashCard` familiares
-	- **Embalaje**: Tarro
+	- **Embalaje**: Jar
 	- **Java**: 17
 
    > Nota: No tienes que introducir el campo **"Package name"** - ¡**Spring Initializr** rellenará esto por ti!

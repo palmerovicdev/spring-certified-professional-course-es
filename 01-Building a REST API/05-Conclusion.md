@@ -13,7 +13,7 @@ Repasemos todos los logros de su curso:
 - [ ] Construiste la `API` usando una arquitectura en capas. Usted comprende cómo **Spring Security** se ubica al “frente” de la `API`, **Spring Web** permite las comunicaciones `HTTP` entre la `API` y sus clientes, y **Spring Data** maneja la lectura y escritura hacia/desde el almacén de datos relacionales.
 - [ ] Utilizó un enfoque de prueba primero para brindar confianza en que su aplicación funciona según lo diseñado y al mismo tiempo expulsa la funcionalidad de su aplicación.
 - [ ] Usted impulsó su implementación utilizando `Steel Thread`, ejerciendo todos los puntos de integración y validando su arquitectura desde el principio para eliminar riesgos en su funcionalidad.
-- [ ] Utilizó el proceso Red, Green, Refactor para mejorar su código (¡y sus pruebas!) durante todo el desarrollo de la aplicación.
+- [ ] Utilizó el proceso **Red, Green, Refactor** para mejorar su código (¡y sus pruebas!) durante todo el desarrollo de la aplicación.
 
 # Keep Learning
 
