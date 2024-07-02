@@ -9,9 +9,10 @@ hacer manualmente varios componentes del framework para ponerla en marcha.
 
 ### Spring Boot
 
-Afortunadamente, **Spring Boot** hace que trabajar con **Spring** sea mucho más sencillo. **Spring Boot** es como una versión más obstinada de **Spring**. Viene con muchas configuraciones y dependencias preconfiguradas que se utilizan comúnmente en las aplicaciones de **Spring**. Esto hace que sea muy fácil empezar rápidamente, sin tener que preocuparse por configurar todo desde cero. Además, **Spring Boot** viene con un servidor web integrado, por lo que puede crear e implementar fácilmente aplicaciones web sin necesidad de un servidor externo.
+Afortunadamente, **Spring Boot** hace que trabajar con **Spring** sea mucho más sencillo. **Spring Boot** es como una versión más obstinada de **Spring**. Viene con muchas configuraciones y dependencias que se utilizan comúnmente en las aplicaciones de **Spring**. Esto hace que sea muy fácil empezar rápidamente, sin tener que preocuparse por configurar todo desde cero. Además, **Spring Boot** viene con un servidor web integrado, por lo que puede crear e implementar fácilmente aplicaciones web sin necesidad de un servidor externo.
 
-En resumen, **Spring** es un marco poderoso e integral que te da mucha flexibilidad, pero que puede ser un poco abrumador de configurar. **Spring Boot** es una versión más funcional y simplificada de **Spring** que viene con muchas características integradas para ayudarte a empezar de forma rápida y sencilla.
+En resumen, **Spring** es un framework poderoso e integral que te da mucha flexibilidad, pero que puede ser un poco abrumador de configurar. **Spring 
+Boot** es una versión más funcional y simplificada de **Spring** que viene con muchas características integradas para ayudarte a empezar de forma rápida y sencilla.
 
 ## Spring's Inversion of Control Container
 
