@@ -8,7 +8,7 @@ Dicho de otra manera, se puede pensar que el "estado" es "valor" y la "represent
 
 <img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/rest-http-flow.png">
 
-Un concepto mencionado con frecuencia cuando se habla de REST es **CRUD**. Este significa "create, read, update y delete" que son las cuatro operaciones básicas que se pueden realizar en objetos de una base de datos. Aprenderemos que REST tiene directrices específicas para implementar cada una.
+Un concepto mencionado con frecuencia cuando se habla de REST es **CRUD**. Este significa "create, read, update y delete" que son las cuatro operaciones básicas que se pueden realizar en objetos de una base de datos. Aprenderemos que  este tiene directrices específicas para implementar cada una.
 
 Otro concepto común asociado con REST es el Protocolo de Transferencia de Hipertexto (HTTP). 
 
@@ -35,9 +35,9 @@ El poder de REST radica en la forma en que hace referencia a un recurso y en có
 - Para UPDATE: utilice el método HTTP PUT.
 - Para DELETE: utilice el método HTTP DELETE.
 
-El **URI** del endpoint para los objetos de CashCard comienza con la palabra clave `/cashcards`. Las operaciones de READ, UPDATE y DELETE requieren que proporcionemos el identificador único del recurso de destino. La aplicación necesita este identificador único para realizar la acción correcta exactamente en el recurso correcto. Por ejemplo, para hacer READ, UPDATE o DELETE a una `CashCard` con el identificador de "42", el endpoint sería `/cashcards/42`.
+El **URI** del endpoint para los objetos de CashCard comienza con la palabra clave `/cashcards`. Las operaciones de READ, UPDATE y DELETE requieren que proporcionemos el identificador único del recurso de destino. La aplicación necesita este identificador único para realizar la acción correcta exactamente en el recurso correcto. Por ejemplo, para hacer READ, UPDATE o DELETE a una `CashCard` con el ID "42", el endpoint sería `/cashcards/42`.
 
-Tenga en cuenta que no proporcionamos este identificador para la operación CREATE. Como aprenderemos con más detalle en futuras lecciones, CREATE tendrá el efecto secundario de crear una nueva `CashCard` con una nueva identificación única. No se debe proporcionar uno al crear una nueva `CashCard` porque la aplicación lo creará para nosotros.
+Tenga en cuenta que no proporcionamos este identificador para la operación CREATE. Como aprenderemos con más detalle en futuras lecciones, CREATE tendrá el efecto secundario de crear una nueva `CashCard` con un nuevo ID. No se debe proporcionar uno al crear una `CashCard` porque la aplicación lo hará por nosotros.
 
 La siguiente tabla tiene más detalles sobre las operaciones de RESTful CRUD.
 
@@ -56,7 +56,7 @@ Cuando seguimos las convenciones REST para crear o actualizar un recurso, necesi
 
 Usemos el ejemplo de un endpoint de lectura. Para la operación de lectura, la ruta URI (endpoint) es `/cashcards/{id}`, donde `{id}` se reemplaza por un identificador de `CashCard` real, sin las llaves, y el método **HTTP** es **GET**.
 
-En las solicitudes **GET**, el cuerpo está vacío. Por lo tanto, la solicitud de leer la CashCard con una identificación de 123 sería:
+En las solicitudes **GET**, el cuerpo está vacío. Por lo tanto, la solicitud de leer la CashCard con ID `123` sería:
   
 ```yaml
 Request:
@@ -87,7 +87,7 @@ Ahora que hemos hablado de REST en general, echemos un vistazo a las partes de S
 
 Una de las principales cosas que hace Spring es configurar e instanciar objetos. Estos objetos se llaman Spring Beans, y generalmente son creados por el framework (en lugar de usar la palabra clave de Java "new"). Puedes dirigirlo para que cree Beans de varias maneras.
 
-En esta lección, anotarás una clase con una anotación de Spring, que le indica que cree una instancia de la clase durante la fase de escaneo de componentes. Esto sucede al iniciar la aplicación. El Bean se almacena en el contenedor de IoC. Desde aquí, se puede inyectar en cualquier código que lo solicite.
+En esta lección, agregará a las clases una anotación de Spring, que le indica que cree una instancia de esta durante la fase de escaneo de componentes. Esto sucede al iniciar la aplicación. El Bean se almacena en el contenedor de IoC. Desde aquí, se puede inyectar en cualquier código que lo solicite.
 
 ### Spring Web Controllers
 
@@ -103,14 +103,14 @@ Eso es todo lo que se necesita para decirle a Spring: "crea un controlador REST"
 
 <img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/webcontroller-implementingGET.jpg">
 
-Un método de controlador puede ser designado como un método que se llamará cuando se recibe una solicitud que el mismo sabe cómo manejar (llamada "solicitud de coincidencia"). ¡Vamos a escribir uno de solicitudes de lectura! Aquí hay un comienzo:
+Un método de controlador puede ser designado para llamarse cuando se recibe una solicitud que sabe cómo manejar (llamada "solicitud de coincidencia"). ¡Vamos a escribir uno de solicitudes de lectura! Aquí hay un comienzo:
   
 ```java
 private CashCard findById(Long requestedId) {
 }
 ```
 
-Dado que REST dice que los endpints de lectura deben usar el método HTTP GET, debe decirle a Spring que enrute las solicitudes al método solo cuando sean GET. Puedes usar la anotación @GetMapping, que necesita la ruta URI:
+Dado que REST dice que los endpints de lectura deben usar el método HTTP GET, debe decirle a Spring que enrute las solicitudes al método solo cuando sean GET. Puedes usar la anotación `@GetMapping`, que necesita la ruta URI:
 
 ```java
 @GetMapping("/cashcards/{requestedId}")
@@ -126,7 +126,7 @@ private CashCard findById(@PathVariable Long requestedId) {
 }
 ```
 
-REST dice que la Respuesta debe contener una CashCard en su cuerpo y un código de respuesta de 200 (OK). Spring Web proporciona la clase `ResponseEntity` para este propósito. También proporciona varios métodos de utilidad para producir `ResponseEntities`. Aquí, puede usar `ResponseEntity.ok()` para crear una con el código 200 (OK) y un cuerpo que contenga una `CashCard`. La implementación final se ve así:
+REST dice que la Respuesta debe contener una `CashCard` en su cuerpo y un código de respuesta de 200 (OK). **Spring Web** proporciona la clase `ResponseEntity` para este propósito. También proporciona varios métodos de utilidad para producir `ResponseEntities`. Aquí, puede usar `ResponseEntity.ok()` para crear una con el código 200 (OK) y un cuerpo que contenga una `CashCard`. La implementación final se ve así:
 
 ```java
 @RestController
