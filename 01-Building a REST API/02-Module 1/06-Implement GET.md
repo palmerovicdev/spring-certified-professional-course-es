@@ -20,19 +20,19 @@ En **HTTP**, una persona que llama envía una solicitud a un **URI**. Un servid
 
 Los componentes de la solicitud y respuesta son:
 
-Request
+**Request**
 - Método (también llamado Verb)
 - URI (también llamado endpoint)
 - Body
 
-Response
+**Response**
 
 - Código de estado
 - Body
 
 Si quieres profundizar más en los métodos de solicitud y respuesta, echa un vistazo al **estándar HTTP**.
 
-El poder de REST radica en la forma en que hace referencia a un recurso y en cómo se ven la solicitud y la respuesta para cada operación de **CRUD**. Echemos un vistazo a cómo será nuestra API cuando terminemos con este curso:
+El poder de **REST** radica en la forma en que hace referencia a un recurso y en cómo se ven la solicitud y la respuesta para cada operación de **CRUD**. Echemos un vistazo a cómo será nuestra API cuando terminemos con este curso:
 
 - Para **CREATE**: utilice el método HTTP POST.
 - Para **READ**: utilice el método HTTP GET.
