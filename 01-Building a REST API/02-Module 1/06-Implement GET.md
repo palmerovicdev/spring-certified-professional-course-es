@@ -10,7 +10,7 @@ Se puede acceder a esas cosas a través de una **API**, y a menudo se guardan en
 
 <img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/main/99-Assets/rest-http-flow.png">
 
-Un concepto mencionado con frecuencia cuando se habla de REST es **CRUD**.
+Un concepto mencionado con frecuencia cuando se habla de **REST** es **CRUD**.
 Este significa "create, read, update y delete" que son las cuatro operaciones básicas que se pueden realizar en objetos de una base de datos.
 Aprenderemos que este tiene directrices específicas para implementar cada una.
 
