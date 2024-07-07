@@ -47,7 +47,7 @@ Tenga en cuenta que no proporcionamos este identificador para la operación **CR
 La siguiente tabla tiene más detalles sobre las operaciones de **RESTful CRUD**.
 
 | Operation | API Endpoint      | HTTP Method | Response Status  |
-| --------- | ----------------- | ----------- | ---------------- |
+|-----------|-------------------|-------------|------------------|
 | Create    | `/cashcards`      | `POST`      | 201 (CREATED)    |
 | Read      | `/cashcards/{id}` | `GET`       | 200 (OK)         |
 | Update    | `/cashcards/{id}` | `PUT`       | 204 (NO CONTENT) |
