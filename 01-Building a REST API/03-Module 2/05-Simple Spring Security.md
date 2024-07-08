@@ -1,4 +1,4 @@
-Volvamos a centrar nuestra atención en nuestro hilo, concentrándonos en otro componente de la arquitectura: Security.
+Volvamos a centrar nuestra atención en nuestro hilo, concentrándonos en otro componente de la arquitectura: **Security**.
 
 ## What Is Security?
 
@@ -8,7 +8,7 @@ La seguridad del software puede significar muchas cosas. El campo es un tema eno
 
 La autenticación es el acto de un usuario que demuestra su identidad al sistema. Una forma de hacer esto es proporcionar credenciales (por ejemplo, un nombre de usuario y una contraseña utilizando la autenticación básica). Decimos que una vez que se han presentado las credenciales adecuadas, se autentica el usuario o, en otras palabras, el usuario ha iniciado sesión correctamente.
 
-**HTTP** es un protocolo sin estado, por lo que cada solicitud debe contener datos que demuestren que es de un usuario autenticado. Aunque es posible presentar las credenciales en cada solicitud, hacerlo es ineficiente porque requiere más procesamiento en el servidor. En su lugar, se crea una sesión de autenticación (Authentication Session, Auth Session, o simplemente Session) cuando un usuario se autentica. Las sesiones se pueden implementar de muchas maneras. Utilizaremos un mecanismo común: un Session Token (una cadena de caracteres aleatorios) que se genera y se coloca en una cookie. Una cookie es un conjunto de datos almacenados en un cliente web (como un navegador) y asociados con un **URI** específico.
+**HTTP** es un protocolo sin estado, por lo que cada solicitud debe contener datos que demuestren que es de un usuario autenticado. Aunque es posible presentar las credenciales en cada solicitud, hacerlo es ineficiente porque requiere más procesamiento en el servidor. En su lugar, se crea una sesión de autenticación (**Authentication Session**, **Auth Session**, o simplemente **Session**) cuando un usuario se autentica. Las sesiones se pueden implementar de muchas maneras. Utilizaremos un mecanismo común: un **Session Token** (una cadena de caracteres aleatorios) que se genera y se coloca en una cookie. Una cookie es un conjunto de datos almacenados en un cliente web (como un navegador) y asociados con un **URI** específico.
 
 Un par de cosas bonitas sobre las **Cookies**:
 
@@ -18,13 +18,17 @@ Un par de cosas bonitas sobre las **Cookies**:
 
 ## Spring Security and Authentication
 
-**Spring Security** implementa la autenticación en **Filter Chain**. **Filter Chain** es un componente de la arquitectura web de **Java** que permite a los programadores definir una secuencia de métodos que se llaman antes del Controller. Cada filtro de la cadena decide si se permite que el procesamiento de solicitudes continúe o no. **Spring Security** inserta un filtro que comprueba la autenticación del usuario y devuelve con una respuesta `401 UNAUTHORIZED` si la solicitud no está autenticada.
+**Spring Security** implementa la autenticación en **Filter Chain**. **Filter Chain** es un componente de la arquitectura web de **Java** que permite a los programadores definir una secuencia de métodos que se llaman antes del **Controller**. Cada filtro de la cadena decide si se permite que el procesamiento de solicitudes continúe o no. **Spring Security** inserta un filtro que comprueba la autenticación del usuario y devuelve con una respuesta `401 UNAUTHORIZED` si la solicitud no está autenticada.
 
 ## Authorization
 
 Hasta ahora hemos hablado de la autenticación. Pero en realidad, la autenticación es solo el primer paso. La autorización ocurre después de la autenticación y permite que diferentes usuarios del mismo sistema tengan diferentes permisos.
 
-**Spring Security** proporciona autorización a través del control de **Role-Based Access Control** (RBAC). Esto significa que un usuario tiene una serie de funciones. Cada recurso (u operación) especifica qué roles debe tener un usuario para realizar acciones con la autorización adecuada. Por ejemplo, es probable que un usuario con un rol de administrador esté autorizado a realizar más acciones que un usuario con un rol de propietario de la tarjeta. Puede configurar la autorización basada en roles tanto a nivel global como por método.
+**Spring Security** proporciona autorización a través del control de **Role-Based Access Control** (RBAC). Esto significa que un usuario tiene una 
+serie de funciones. Cada recurso (u operación) especifica qué roles debe tener un usuario para realizar acciones con la autorización adecuada. Por 
+ejemplo, es probable que un usuario con un rol de `ADMIN` esté autorizado a realizar más acciones que un usuario con un rol de `CashCard` `OWNER`. Puede 
+configurar 
+la autorización basada en roles tanto a nivel global como por método.
 
 ## Same Origin Policy
 
@@ -62,7 +66,7 @@ Eso es todo por nuestra breve introducción a la seguridad web. La seguridad web
 
 # Summary
 
-La autenticación y la autorización son los dos pilares más importantes de la seguridad del software. En las aplicaciones web modernas, estas dos preocupaciones están bajo un ataque constante a través de innumerables exploits de seguridad incluidos Cross-Site Request Forgery, Cross-Site Scripting, y el mal uso de Cross-Origin Resource Sharing.
+La autenticación y la autorización son los dos pilares más importantes de la seguridad del software. En las aplicaciones web modernas, estas dos preocupaciones están bajo un ataque constante a través de innumerables exploits de seguridad incluidos **Cross-Site Request Forgery**, **Cross-Site Scripting**, y el mal uso de **Cross-Origin Resource Sharing**.
 
 Por suerte para nosotros, **Spring Security** es la herramienta de seguridad más poderosa de la comunidad de **Spring** para gestionar las preocupaciones de seguridad de una aplicación moderna de **Spring Boot**. Además, es extremadamente fácil de incorporar y configurar.
 

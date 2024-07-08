@@ -30,11 +30,11 @@ private ResponseEntity<Iterable<CashCard>> findAll() {
 
 Sin embargo, resulta que hay mucho más en esta operación que simplemente devolver todas las `CashCard` en la base de datos. Algunas preguntas me vienen a la mente:
 
-### 1. ¿Cómo devuelvo solo las `CashCard` que posee el usuario? (¡Gran pregunta! Discutiremos esto en la próxima lección de Spring Security).
+1. ¿Cómo devuelvo solo las `CashCard` que posee el usuario? (¡Gran pregunta! Discutiremos esto en la próxima lección de Spring Security).
 
-### 2. ¿Y si hay cientos (o miles) de `CashCard`? ¿Debería la **API** devolver un número ilimitado de resultados o devolverlos en "partes"? Esto se conoce como **Paginación**.
+2. ¿Y si hay cientos (o miles) de `CashCard`? ¿Debería la **API** devolver un número ilimitado de resultados o devolverlos en "partes"? Esto se conoce como **Paginación**.
 
-### 3. ¿Deberían devolverse las `CashCard` en un orden en particular (es decir, deberían clasificarse)?
+3. ¿Deberían devolverse las `CashCard` en un orden en particular (es decir, deberían clasificarse)?
 
 Dejaremos la primera pregunta para más tarde, pero responderemos a las preguntas de paginación y clasificación de esta lección.
 

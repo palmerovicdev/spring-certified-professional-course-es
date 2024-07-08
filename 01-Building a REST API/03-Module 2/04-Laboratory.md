@@ -394,7 +394,7 @@ En primer lugar, completemos la prueba para afirmar los valores de datos esperad
          assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     
          DocumentContext documentContext = JsonPath.parse(response.getBody());
-         int cashCardCount = documentContext.read("$.length()");
+         int cashCardCount = documentContext.read("$.content.length()");
          assertThat(cashCardCount).isEqualTo(3);
     
          JSONArray ids = documentContext.read("$..id");
@@ -532,7 +532,7 @@ Agregue la siguiente prueba a `CashCardApplicationTests`, y tenga en cuenta que 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     
         DocumentContext documentContext = JsonPath.parse(response.getBody());
-        JSONArray page = documentContext.read("$[*]");
+        JSONArray page = documentContext.read("$.length()");
         assertThat(page.size()).isEqualTo(1);
     }
 ```
