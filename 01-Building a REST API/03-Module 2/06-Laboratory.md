@@ -444,7 +444,8 @@ Como aprendimos en la lección que lo acompaña, **Spring Security** es compatib
 
 Aquí implementaremos el **Role-Based Access Control** (RBAC).
 
-Es probable que un servicio de usuario proporcione acceso a muchos usuarios autenticados, pero solo se debe permitir a los "`CashCard` owners" acceder a las **Family Cash Card** administradas por nuestra aplicación. Hagamos esas actualizaciones ahora.
+Es probable que un servicio de usuario proporcione acceso a muchos usuarios autenticados, pero solo se debe permitir a los "`CashCard OWNERS`" 
+acceder a las **Family Cash Card** administradas por nuestra aplicación. Hagamos esas actualizaciones ahora.
 
 ### 1. Añade usuarios y roles al `UserDetailsService Bean`.
 
