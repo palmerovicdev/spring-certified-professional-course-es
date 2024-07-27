@@ -55,16 +55,16 @@ La siguiente tabla tiene más detalles sobre las operaciones de **RESTful CRUD**
 
 ### The Request Body
 
-Cuando seguimos las convenciones REST para crear o actualizar un recurso, necesitamos enviar datos a la **API**. Esto se conoce a menudo como el 
+Cuando seguimos las convenciones **REST** para **crear o actualizar** un recurso, necesitamos enviar datos a la **API**. Esto se conoce a menudo como el 
 cuerpo de solicitud. Las operaciones **CREATE** y **UPDATE** requieren que este cuerpo contenga los datos necesarios para crear o actualizar 
-correctamente el recurso. Por ejemplo, una nueva CashCard podría tener una cantidad de valor en efectivo inicial, y una operación de **UPDATE** podría 
+correctamente el recurso. Por ejemplo, una nueva `CashCard` podría tener una cantidad de valor en efectivo inicial, y una operación de **UPDATE** podría 
 cambiar esa cantidad.
 
 ### Cash Card Example
 
 Usemos el ejemplo de un endpoint de lectura. Para la operación de lectura, la ruta **URI** (endpoint) es `/cashcards/{id}`, donde `{id}` se reemplaza por un identificador de `CashCard` real, sin las llaves, y el método **HTTP** es **GET**.
 
-En las solicitudes **GET**, el cuerpo está vacío. Por lo tanto, la solicitud de leer la **CashCard** con `ID` `123` sería:
+En las solicitudes **GET**, el cuerpo está vacío. Por lo tanto, la solicitud de leer la `CashCard` con `ID` `123` sería:
   
 ```yaml
 Request:
@@ -85,7 +85,7 @@ Response:
   }
 ```
 
-A medida que avancemos en este curso, también aprenderás a implementar todas las operaciones restantes de CRUD.
+A medida que avancemos en este curso, también aprenderás a implementar todas las operaciones restantes **CRUD**.
 
 ## REST in Spring Boot
 
@@ -93,13 +93,13 @@ Ahora que hemos hablado de **REST** en general, echemos un vistazo a las partes 
 
 ### Spring Annotations and Component Scan
 
-Una de las principales cosas que hace Spring es configurar e instanciar objetos. Estos objetos se llaman Spring Beans, y generalmente son creados por el framework (en lugar de usar la palabra clave de Java "new"). Puedes dirigirlo para que cree Beans de varias maneras.
+Una de las principales cosas que hace **Spring** es configurar e instanciar objetos. Estos objetos se llaman **Spring Beans**, y generalmente son creados por el **framework** (en lugar de usar la palabra clave "new"). Puedes indicarle que cree **Beans** de varias maneras.
 
-En esta lección, agregará a las clases una anotación de **Spring**, que le indica que cree una instancia de esta durante la fase de escaneo de componentes. Esto sucede al iniciar la aplicación. El Bean se almacena en el contenedor de **IoC**. Desde aquí, se puede inyectar en cualquier código que lo solicite.
+En esta lección, agregará a las clases una anotación de **Spring**, que le indica que cree una instancia de esta durante la fase de escaneo de componentes. Esto sucede al iniciar la aplicación. El **Bean** se almacena en el contenedor de **IoC**. Desde aquí, se puede inyectar en cualquier código que lo solicite.
 
 ### Spring Web Controllers
 
-En `Spring Web`, las solicitudes son manejadas por los controladores. En esta lección, utilizarás la anotación `@RestController` que es más específica:
+En **Spring Web**, las solicitudes son manejadas por los controladores. En esta lección, utilizarás la anotación `@RestController` que es más específica:
   
 ```java
 @RestController
@@ -135,7 +135,7 @@ private CashCard findById(@PathVariable Long requestedId) {
 }
 ```
 
-**REST** dice que la Respuesta debe contener una `CashCard` en su cuerpo y un código de respuesta de `200 OK`. **Spring Web** proporciona la clase `ResponseEntity` para este propósito. También proporciona varios métodos de utilidad para producir `ResponseEntities`. Aquí, puede usar `ResponseEntity.ok()` para crear una con el código `200 OK` y un cuerpo que contenga una `CashCard`. La implementación final se ve así:
+**REST** dice que la `Response` debe contener una `CashCard` en su cuerpo y un código de respuesta de `200 OK`. **Spring Web** proporciona la clase `ResponseEntity` para este propósito. También proporciona varios métodos de utilidad para producir `ResponseEntities`. Aquí, puede usar `ResponseEntity.ok()` para crear una con el código `200 OK` y un cuerpo que contenga una `CashCard`. La implementación final se ve así:
 
 ```java
 @RestController
@@ -150,6 +150,6 @@ class CashCardController {
 
 ## Summary
 
-En esta lección, aprendiste cómo **REST** utiliza **HTTP** para definir las operaciones **CRUD** en una **API**. Luego, aprendiste a definir un controlador para implementar el endpoint de lectura, y cómo usar la funcionalidad adicional de Spring para procesar fácilmente la solicitud y la respuesta.
+En esta lección, aprendiste cómo **REST** utiliza **HTTP** para definir las operaciones **CRUD** en una **API**. Luego, aprendiste a definir un controlador para implementar el endpoint de lectura, y cómo usar la funcionalidad adicional de **Spring** para procesar fácilmente la solicitud y la respuesta.
 
 ¡Ahora, vamos a implementar nuestro primer endpoint **REST** usando **Spring** y **Spring Boot**!
