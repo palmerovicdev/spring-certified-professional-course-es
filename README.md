@@ -24,14 +24,14 @@ Esta ruta de aprendizaje curada te proporciona todo lo necesario para convertirt
 
 Estos cursos están diseñados para darte experiencia práctica con las principales características de **Spring** y **Spring Boot**, que incluyen:
 
-- Configuracion.
-- Acceso a datos.
-- REST.
-- AOP.
-- Auto - Configuracion.
-- Actuator.
-- Seguridad.
-- El framework de testing de Spring.
+- **Configuracion**
+- **Acceso a datos**
+- **REST**
+- **AOP**
+- **Auto - Configuracion**
+- **Actuator**
+- **Seguridad**
+- **El framework de testing de Spring**
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ Estos cursos están diseñados para darte experiencia práctica con las principa
 
 - Conocimiento práctico del desarrollo de aplicaciones web utilizando **Java** y un motor **Servlet** como **Tomcat** o **Jetty**
 
-- Comprensión de anotaciones y lambdas en **Java**
+- Comprensión de **anotaciones** y **lambdas** en **Java**
 
 - Comprensión de la gestión de dependencias usando **Maven** o **Gradle**
 
