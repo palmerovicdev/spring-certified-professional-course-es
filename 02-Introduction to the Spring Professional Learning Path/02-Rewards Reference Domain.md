@@ -8,4 +8,6 @@ Esta sección proporciona una descripción general del **dominio** y las **aplic
 El dominio se llama **Reward Dining**. La idea es que los clientes puedan ahorrar dinero cada vez que coman en uno de los restaurantes que participan en la red, un programa de **"viajero frecuente"** para restaurantes.
 Por ejemplo, a **Keith** le gustaría **ahorrar dinero** para la educación de sus hijos. Cada vez que cena en un restaurante miembro de la red, se realiza una aportación a su cuenta.
 
-<img src="99-Assets/keith-dining.png" alt="Reward Dining Domain" width="800"/>
+<img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/1d9566c064143b674f5049674ce5fff2a5ac802b/99-Assets/keith-dining.png" alt="Reward Dining Domain" width="800"/>
+
+**Figure 1**: Papa **Keith** cena en un restaurante de **Reward Network**.
