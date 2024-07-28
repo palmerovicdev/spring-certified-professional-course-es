@@ -7,7 +7,17 @@ definitiva en nuestra `API Cash Card`, utilizando las especificaciones de `API` 
 
 Si ha realizado prácticas de laboratorio anteriores en este curso, notará los siguientes cambios en el código base, que hemos realizado en su nombre, para que esta práctica de laboratorio sea más fácil de entender y completar.
 
-Hemos agregado credenciales para el usuario `kumar2` al bean `testOnlyUsers` en `src/main/java/example/cashcard/SecurityConfig.java`.
+Debemos agregar credenciales para el usuario `kumar2` al bean `testOnlyUsers` en `src/main/java/example/cashcard/SecurityConfig.java`.
+
+Agregue el siguiente código al método `testOnlyUsers(PasswordEncoder passwordEncoder)` en `src/main/java/example/cashcard/SecurityConfig.java`:
+
+```java
+UserDetails kumar = users
+                .username("kumar2")
+                .password(passwordEncoder.encode("xyz789"))
+                .roles("CARD-OWNER")
+                .build();
+```
 
 ¡Implementemos el endpoint `DELETE`!
 
