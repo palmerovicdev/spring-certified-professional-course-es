@@ -1,7 +1,6 @@
 # Overview
 
-En la lección asociada, aprendió a implementar la operación `DELETE` en una `API REST`. En esta práctica de laboratorio, implementaremos la eliminación 
-definitiva en nuestra `API Cash Card`, utilizando las especificaciones de `API` que definimos en la lección asociada.
+En la lección asociada, aprendió a implementar la operación `DELETE` en una `API REST`. En esta práctica de laboratorio, implementaremos la **eliminación definitiva** en nuestra `API Cash Card`, utilizando las especificaciones de `API` que definimos en la lección asociada.
 
 ## Credentials for test user Kumar
 
@@ -53,8 +52,7 @@ public class RestTemplate ... {
     public void delete(String url, Object... uriVariables)
 ```
 
-Los otros métodos que hemos estado usando (como `getForEntity()` e `exchange()`) devuelven una `ResponseEntity`, pero `delete()` no. Más bien, es un 
-método nulo. ¿Por qué es esto?
+Los otros métodos que hemos estado usando (como `getForEntity()` e `exchange()`) devuelven una `ResponseEntity`, pero `delete()` no. Más bien, es un método nulo. ¿Por qué es esto?
 
 El framework **Spring Web** proporciona el método `delete()` por conveniencia, pero viene con algunas suposiciones:
 - Una respuesta a una solicitud `DELETE` no tendrá cuerpo.
@@ -83,7 +81,7 @@ La prueba falló porque la solicitud `DELETE /cashcards/99` devolvió un `403 FO
 
 En este punto probablemente esperaba este resultado: **Spring Security** devuelve una respuesta `403` para cualquier endpoint que no esté asignado.
 
-Necesitamos implementar el método Controlador. ¡Hagamoslo!
+Necesitamos implementar el método **Controlador**. ¡Hagamoslo!
 
 ### 3. Implemente el endpoint `DELETE` en el `Controller`.
 
@@ -137,8 +135,7 @@ void shouldDeleteAnExistingCashCard() {
 
 ### 6. Comprenda el código de prueba.
 
-Queremos probar que la `CashCard` eliminada realmente se elimina, por lo que intentamos hacer `GET` y afirmamos que el código de resultado es `404 
-NOT FOUND`.
+Queremos probar que la `CashCard` eliminada realmente se elimina, por lo que intentamos hacer `GET` y afirmamos que el código de resultado es `404 NOT FOUND`.
 
 Ejecute la prueba. ¿Pasa? ¡Por supuesto que no!
 
@@ -169,7 +166,7 @@ private ResponseEntity<Void> deleteCashCard(@PathVariable Long id) {
 ```
 
 El cambio es sencillo:
-- Usamos `@DeleteMapping` con el parámetro "`{id}`", que **Spring Web** compara con el parámetro del método id.
+- Usamos `@DeleteMapping` con el parámetro "`{id}`", que **Spring Web** compara con el parámetro del método `id`.
 - `CashCardRepository` ya tiene el método que necesitamos: `deleteById()` (se hereda de `CrudRepository`).
 
 ¡Realiza las pruebas y observa cómo pasan!
@@ -251,8 +248,7 @@ interface CashCardRepository extends CrudRepository<CashCard, Long>, PagingAndSo
 ```
 
 ### 3. Comprenda el código del repositorio.
-Agregamos lógica al método del `Controller` para verificar si la `ID` de la `CashCard` en la solicitud realmente existe en la base de datos. El 
-método que usaremos es `CashCardRepository.existsByIdAndOwner(id, userName)`.
+Agregamos lógica al método del `Controller` para verificar si la `ID` de la `CashCard` en la solicitud realmente existe en la base de datos. El método que usaremos es `CashCardRepository.existsByIdAndOwner(id, userName)`.
 
 Este es otro caso en el que **Spring Data** generará la implementación de este método siempre que lo agreguemos al `Repository`.
 
@@ -272,10 +268,9 @@ BUILD SUCCESSFUL in 8s
 
 # Refactor
 
-En este punto, tenemos la oportunidad de practicar el proceso de Red, Green, Refactor. Ya hicimos el Red (la prueba fallida) y el Green (la prueba 
-aprobada). 
+En este punto, tenemos la oportunidad de practicar el proceso de **Red**, **Green**, **Refactor**. Ya hicimos el **Red** (la prueba fallida) y el **Green** (la prueba aprobada). 
 
-Ahora podemos preguntarnos, ¿deberíamos Refactorizar algo?
+Ahora podemos preguntarnos, ¿deberíamos **Refactorizar** algo?
 
 Aquí está el cuerpo de nuestro método `CashCardController.deleteCashCard`:
 
@@ -312,11 +307,9 @@ BUILD SUCCESSFUL in 8s
 
 # Hide Unauthorized Records
 
-En este punto, es posible que se pregunte: "¿Hemos terminado?". ¡Eres la mejor persona para responder esa pregunta! Si lo desea, tómese un par de minutos para refrescarse con la lección adjunta para ver si hemos probado e implementado todos los aspectos del contrato `API` para `DELETE`.
+En este punto, es posible que se pregunte: **"¿Hemos terminado?"**. ¡Eres la mejor persona para responder esa pregunta! Si lo desea, tómese un par de minutos para refrescarse con la lección adjunta para ver si hemos probado e implementado todos los aspectos del contrato `API` para `DELETE`.
 
-Vale, fue un tiempo bien empleado, ¿no? Así es, hay un caso más que aún tenemos que probar: ¿Qué pasa si el usuario intenta eliminar una 
-`CashCard` propiedad de otra persona? Decidimos en la lección asociada que la respuesta debería ser `404 NOT FOUND` en este caso. Esa es suficiente 
-información para que podamos escribir una prueba para ese caso:
+Vale, fue un tiempo bien empleado, ¿no? Así es, hay un caso más que aún tenemos que probar: ¿Qué pasa si el usuario intenta eliminar una `CashCard` propiedad de otra persona? Decidimos en la lección asociada que la respuesta debería ser `404 NOT FOUND` en este caso. Esa es suficiente información para que podamos escribir una prueba para ese caso:
 
 ### 1. En `CashCardApplicationTests.java`, agregue el siguiente método de prueba al final de la clase:
 
@@ -350,8 +343,7 @@ Ahora, consideremos una pregunta que se le puede haber ocurrido: ¿Por qué nece
 
 Respuestas:
 - Sí, ese es uno de los muchos beneficios que ofrece `TDD`: un proceso para guiar la creación de código para llegar al resultado deseado.
-- Sin embargo, las pruebas en sí mismas tienen otro propósito, aparte del `TDD`: las pruebas son una poderosa red de seguridad para hacer cumplir la 
-  corrección. Dado que la prueba que acaba de escribir prueba un caso diferente a los ya escritos, proporciona valor. Si alguien hiciera un cambio en el código que provocara que esta nueva prueba fallara, entonces habrá detectado el error antes de que pueda convertirse en un problema. Bien por las pruebas.
+- Sin embargo, las pruebas en sí mismas tienen otro propósito, aparte del `TDD`: las pruebas son una poderosa red de seguridad para hacer cumplir la corrección. Dado que la prueba que acaba de escribir prueba un caso diferente a los ya escritos, proporciona valor. Si alguien hiciera un cambio en el código que provocara que esta nueva prueba fallara, entonces habrá detectado el error antes de que pueda convertirse en un problema. Bien por las pruebas.
 
 ### 3. Una prueba más.
 
@@ -392,7 +384,6 @@ BUILD SUCCESSFUL in 6s
 
 # Summary
 
-En esta práctica de laboratorio, implementó un endpoint `RESTful` `DELETE` que no "filtra" información de seguridad a posibles atacantes. También 
-tuvo la oportunidad de hacer una refactorización pequeña pero útil para practicar el proceso de **Red, Green, Refactor**.
+En esta práctica de laboratorio, implementó un endpoint `RESTful` `DELETE` que no "filtra" información de seguridad a posibles atacantes. También tuvo la oportunidad de hacer una refactorización pequeña pero útil para practicar el proceso de **Red, Green, Refactor**.
 
 Esta es la última de las operaciones `CRUD` que se implementará en la `API`, lo que nos lleva a una conclusión exitosa de nuestro trabajo técnico. ¡Felicidades!
