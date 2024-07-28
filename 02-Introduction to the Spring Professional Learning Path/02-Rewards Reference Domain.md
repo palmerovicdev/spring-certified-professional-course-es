@@ -16,3 +16,17 @@ La contribución de la cuenta (recompensa) será compartida por sus dos hijos **
 
 <img src="https://raw.githubusercontent.com/vmware-tanzu-learning/spring-academy-assets/main/courses/course-spring-professional/annabelle.png" 
 alt="Annabelle" width="400"/>
+
+**Figure 2**: La hija **Annabelle** recibe contribuciones a su fondo universitario
+
+## Reward Dining Domain ApplicationsReward Dining Domain Applications
+
+La siguiente sección proporciona una descripción general de las aplicaciones en el dominio de comidas premiadas en las que trabajará en este curso.
+
+### The Rewards ApplicationThe Rewards Application
+
+La aplicación **"rewards"** recompensa una cuenta por cenar en un restaurante que participa en la red de recompensas. Una recompensa toma la forma de una 
+contribución monetaria a una cuenta que se distribuye entre los beneficiarios de la cuenta. Así es como se utiliza esta aplicación:
+1. Cuando tienen hambre, los miembros cenan en los restaurantes participantes utilizando sus tarjetas de crédito habituales.
+2. Cada dos semanas se genera un archivo que contiene las transacciones con tarjetas de crédito de comedor realizadas por los socios durante ese 
+   período. A continuación se muestra un ejemplo de uno de estos archivos:
