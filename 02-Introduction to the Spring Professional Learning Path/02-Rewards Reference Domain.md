@@ -11,3 +11,8 @@ Por ejemplo, a **Keith** le gustaría **ahorrar dinero** para la educación de s
 <img src="https://github.com/palmerovicdev/spring-certified-professional-course-es/blob/1d9566c064143b674f5049674ce5fff2a5ac802b/99-Assets/keith-dining.png" alt="Reward Dining Domain" width="800"/>
 
 **Figure 1**: Papa **Keith** cena en un restaurante de **Reward Network**.
+
+La contribución de la cuenta (recompensa) será compartida por sus dos hijos **Annabelle** y **Corgan**. Así, Annabelle obtiene un fondo para ayudarla con los gastos de la universidad:
+
+<img src="https://raw.githubusercontent.com/vmware-tanzu-learning/spring-academy-assets/main/courses/course-spring-professional/annabelle.png" 
+alt="Annabelle" width="400"/>
