@@ -115,14 +115,19 @@ Edite `src/main/java/example/cashcard/CashCardController.java` y agregue el endp
 @PutMapping("/{requestedId}")
 private ResponseEntity<Void> putCashCard(@PathVariable Long requestedId, @RequestBody CashCard cashCardUpdate) {
     // just return 204 NO CONTENT for now.
+    CashCard updatedCashCard = new CashCard(requestedId, cashCardUpdate.amount(), principal.getName());
+    cashCardRepository.save(updatedCashCard);
     return ResponseEntity.noContent().build();
 }
 ```
 
 Este endpoint del controlador se explica por sí mismo:
 
-- @PutMapping admite el verbo `PUT` y proporciona el `ID` solicitado de destino.
-- @RequestBody contiene los datos actualizados de `CashCard`.
+- `@PutMapping` admite el verbo `PUT` y proporciona el `ID` solicitado de destino.
+- `@RequestBody` contiene los datos actualizados de `CashCard`.
+- Creamos una nueva `CashCard` con los datos actualizados y la `ID` de destino.
+- Guardamos la nueva `CashCard` en la base de datos. Tenga en cuenta que el metodo `save` de los repositorios de `JPA` sirve tanto para actualizar 
+  una `CashCard` existente como para insertar una nueva en la base de datos.
 - Devuelve un código de respuesta `HTTP 204 NO_CONTENT` por ahora, solo para comenzar.
 
 ### 2. Ejecute las pruebas.
