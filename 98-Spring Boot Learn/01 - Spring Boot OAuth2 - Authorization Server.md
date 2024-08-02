@@ -167,7 +167,7 @@ public class SecurityConfig {
 
 	@Bean (3)
 	public UserDetailsService userDetailsService() {
-		UserDetails userDetails = User.withDefaultPasswordEncoder()
+		UserDetails userDetails = User.builder()
 				.username("user")
 				.password("password")
 				.roles("USER")
@@ -179,16 +179,15 @@ public class SecurityConfig {
 	@Bean (4)
 	public RegisteredClientRepository registeredClientRepository() {
 		RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-				.clientId("oidc-client")
-				.clientSecret("{noop}secret")
+				.clientId("oidc-client") // identifica la apk en el server de oauth2
+				.clientSecret("{noop}secret") // el secret de la apk en ese server
 				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
+				.redirectUri("https://oauthdebugger.com/debug")
 				.postLogoutRedirectUri("http://127.0.0.1:8080/")
 				.scope(OidcScopes.OPENID)
 				.scope(OidcScopes.PROFILE)
-				.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build();
 
 		return new InMemoryRegisteredClientRepository(oidcClient);
