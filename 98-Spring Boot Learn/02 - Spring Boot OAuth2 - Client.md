@@ -5,7 +5,7 @@ Primeramente, debemos agregar las siguientes dependencias en el proyecto.
 Agregado al archivo `pom.xml`:
 
 ```xml
-<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
@@ -47,9 +47,36 @@ Agregado al archivo `pom.xml`:
         </dependency>
     </dependencies>
 ```
+
+Breve explicación del uso de cada dependencia:
+
+- `spring-boot-starter-oauth2-client`: Facilita la integración de clientes **OAuth2** en aplicaciones **Spring Boot**, permitiendo la autenticación y 
+autorización mediante proveedores **OAuth2** como **Google**, **Facebook**, etc.
+
+- `spring-boot-starter-security`: Proporciona soporte básico para seguridad en aplicaciones **Spring Boot**, incluyendo autenticación, protección contra 
+ataques **CSRF**, y configuración de seguridad personalizada.
+
+- `spring-boot-starter-web`: Esencial para desarrollar aplicaciones web, incluye **Spring MVC** y **Tomcat** como servidor embebido, facilitando la creación 
+de servicios **RESTful**.
+
+- `spring-boot-devtools`: Mejora el desarrollo proporcionando recarga automática de código, acceso a herramientas de desarrollo live, y otras 
+características útiles durante el desarrollo.
+
+- `lombok`: Reduce la boilerplate en el código **Java** generando automáticamente getters, setters, constructores, y más, mejorando la legibilidad y 
+mantenibilidad del código.
+
+- `spring-boot-starter-test`: Contiene todas las dependencias necesarias para realizar pruebas unitarias y de integración en aplicaciones **Spring Boot**,
+incluyendo **JUnit**, **Mockito**, y **Spring Test**.
+
+- `spring-security-test`: Extiende las capacidades de prueba de **Spring Boot** para incluir soporte específico para **Spring Security**, facilitando la 
+escritura de pruebas de seguridad.
+
+- `spring-boot-configuration-processor`: Genera metadatos para la configuración de **Spring Boot**, ayudando a **IDEs** y editores de texto a ofrecer 
+autocompletado y validación para propiedades de configuración.
+
 ## Creating endpoints to test
 
-Debemos crear dos endpoints que nos sirvan de guia para saber si hemos implementado correctamente la autenticación por OAuth2.
+Debemos crear dos endpoints que nos sirvan de guia para saber si hemos implementado correctamente la autenticación por **OAuth2**.
 
 Crea un archivo llamado HomeController, que contenga el siguiente código:
 
