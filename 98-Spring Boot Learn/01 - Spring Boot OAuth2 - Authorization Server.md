@@ -233,8 +233,8 @@ public class SecurityConfig {
 ```
 
 Esta es una configuración mínima para comenzar rápidamente. Para comprender para qué se utiliza cada componente, consulte las siguientes descripciones:
-1. Una cadena de filtros de Spring Security para los [endpoints de protocolo](https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html).
-2. Una cadena de filtros de Spring Security para [autenticación](https://docs.spring.io/spring-security/reference/servlet/authentication/index.html).
+1. Una cadena de filtros de **Spring Security** para los [endpoints de protocolo](https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html).
+2. Una cadena de filtros de **Spring Security** para [autenticación](https://docs.spring.io/spring-security/reference/servlet/authentication/index.html).
 3. Una instancia de [`UserDetailsService`](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetailsService.html) para recuperar usuarios para autenticar.
 4. Una instancia de [`RegisteredClientRepository`](https://docs.spring.io/spring-authorization-server/reference/core-model-components.html#registered-client-repository) para administrar clientes.
 5. Una instancia de `com.nimbusds.jose.jwk.source.JWKSource` para firmar tokens de acceso.
